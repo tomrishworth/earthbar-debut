@@ -1,0 +1,22 @@
+{
+  "name": "earthbar-debut-live",
+  "version": "1.0.0",
+  "description": "Earthbar Shopify Theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomrishworth/earthbar-debut.git"
+  },
+  "author": "Tom Rishworth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomrishworth/earthbar-debut/issues"
+  },
+  "homepage": "https://github.com/tomrishworth/earthbar-debut#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
