@@ -6,7 +6,7 @@
       {%- for product in recommendations.products -%}
       <li class="product col">
         <a class="mb-4 d-block" href="{{ product.url }}">
-          <img class="product__img" src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.featured_image.alt }}" />
+          <div><img loading="lazy" class="product__img" src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.featured_image.alt }}" /></div>
           <h4 class="h4 grid-view-item__title product-card__title">{{ product.title }}</h4>
           {% include 'product-price', variant: product %} 
           {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge',
