@@ -570,6 +570,8 @@
   {% include 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false %}
 
   </div>
+
+  <div id="test"></div>
     
 </div>
 
@@ -590,8 +592,50 @@
 {% endunless %}
 
 <script>
+  
+  const ProductPageOptions = {
+    name: 'Product Page',
+    data() {
+      return {
+        handle:  '{{ product.handle }}'
+      }
+    },
+    mounted() {
+      const token = "719cac69bfc8f603ffe738c5b71d6e";
+      fetch("https://graphql.datocms.com/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          variables: {},
+          query: ` 
+            query Ingredients {
+              product(filter: { shopifyReference: {eq: "${this.handle}"}}) {
+              id
+              ingredients {
+                title
+              }
+            }
+          }
+          `
+        })
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+  }
 
 
+
+  const ProductPage = Vue.createApp(ProductPageOptions).mount('#test');
 </script>
 
 {% schema %}
