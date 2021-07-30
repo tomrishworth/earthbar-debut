@@ -1,17 +1,4 @@
-<div class="product-scrolled">
-    <div class="page-width">
-      <div class="d-flex product-scrolled-meta">
-        <div class="mr-5">
-          <img src="{{ product.featured_image | img_url }}"/>
-        </div>
-        <div class="mt-3">
-          <div class="product-title">{{ product.title }}</div>
-          <div class="product-reviews"> {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}</div>
-        </div>
-      </div>
-    </div>
-</div>
-
+<div id="product-page">
 <div class="product-template__container page-width"
   id="ProductSection-{{ section.id }}"
   data-section-id="{{ section.id }}"
@@ -251,18 +238,18 @@
 
         {% endif %} {% endcomment %}
 
-        <div class="tabs" x-data="{ tab: 'description' }">
+        <div class="tabs" >
           <div class="tab-buttons">
-            <button type="button" :class="{ 'active': tab === 'description' }" @click="tab = 'description'">Description</button>
-            <button type="button" :class="{ 'active': tab === 'ingredients' }" @click="tab = 'ingredients'">Ingredients</button>
-            {% if product.type == 'Soap' %}<button :class="{ 'active': tab === 'notes' }" @click="tab = 'notes'">Notes</button>  {% endif %}
+            <button type="button" :class="{'active': activeTab === 'description' }" @click="activeTab = 'description'">Description</button>
+            <button type="button" :class="{'active': activeTab === 'ingredients' }" @click="activeTab = 'ingredients'">Ingredients</button>
+            {% if product.type == 'Soap' %}<button  type="button" :class="{'active': activeTab === 'notes' }" @click="activeTab = 'notes'">Notes</button>  {% endif %}
           </div>
-          <div x-show.transition.in.opacity="tab === 'description'">
+          <div v-if="activeTab === 'description'" >
             <div class="product-single__description rte">
               {{ product.description }}
               {% if product.type == 'Soap' %}
               <a style="border:none" class="d-flex pb-0 align-items-center" href="/collections/soap/products/recycled-wood-soap-trap">
-                <div class="mr-3"><img width="150px" src="https://cdn.shopify.com/s/files/1/0049/9990/5350/products/dish_300x300.jpg" alt="Recycled Timber Soap Tray"/></div>
+                <div class="mr-3"><img width="150" loading="lazy" src="https://cdn.shopify.com/s/files/1/0049/9990/5350/products/dish_300x300.jpg" alt="Recycled Timber Soap Tray"/></div>
                 <div>
                   <h3 class="text-base mb-2">The ideal companion for your favourite soap!</h3>
                   <p>Prolong the life of your soap by keeping it dry with this <span class="fake-link font-weight-bold">Recycled Timber Soap Tray</span></p>
@@ -271,20 +258,21 @@
               {% endif %}
             </div>
           </div>
-          <div x-show.transition.in.opacity="tab === 'ingredients'">
-           {% if product.metafields.custom_fields["all_ingredients_"] != blank %}
-              <div class="">
-                {{ product.metafields.custom_fields["all_ingredients_"] }}
-              </div>
-            {% endif %}
+          <div v-if="activeTab === 'ingredients'">
+            <p>${allIngredients}$</p>
           </div>
+
+         
+          <div v-if="activeTab === 'notes'">
           {% if product.type == 'Soap' %}
-            <div x-show.transition.in.opacity="tab === 'notes'">
+            <div >
               <p>This soap is made from scratch with the cold process method, using quality oils that produces a gentle and bubbly soap. It contains no artificial colours or scents. </p>
               <p>Due to 100% handcrafted products, the size, colour and shape may slightly vary from the picture. </p>
               <p>Handmade soap will last a long time if kept dry between uses. We recommend using a draining soap dish and keeping bars away from direct streams of water.</p>
             </div>
           {% endif %}
+          </div>
+
         </div>
 
         
@@ -302,277 +290,16 @@
     </div>
   </div>
 </div>
-<div id="app" class="page-width">
-
-  {% 
-    if 
-    product.metafields.custom_fields["shea_butter"] == 1 or
-    product.metafields.custom_fields["activated_charcoal"] == 1 or
-    product.metafields.custom_fields["kaolin_clay"] == 1 or
-    product.metafields.custom_fields["coconut_milk"] == 1 or
-    product.metafields.custom_fields["bentonite_clay"] == 1 or
-    product.metafields.custom_fields["cocoa_butter"] == 1 or
-    product.metafields.custom_fields["pink_clay"] == 1 or
-    product.metafields.custom_fields["green_clay"] == 1 or
-    product.metafields.custom_fields["wheat_protein"] == 1 or
-    product.metafields.custom_fields["avocado_oil"] == 1 or
-    product.metafields.custom_fields["hemp_seed_oil"] == 1 or
-    product.metafields.custom_fields["hemp_seed_oil_body"] == 1 or
-    product.metafields.custom_fields["rosemary_oil"] == 1 or
-    product.metafields.custom_fields["vitamin_e_oil"] == 1 or
-    product.metafields.custom_fields["coconut_oil"] == 1 or
-    product.metafields.custom_fields["lavendar_oil"] == 1 or
-    product.metafields.custom_fields["tea_tree_oil"] == 1
-  %}
-    <hr>
-    <h2 class="mb-5">Key Ingredients</h2>
-  {% endif %}
-
-
-  <div class="row pr-sm-5">
-    {% if product.metafields.custom_fields["tea_tree_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/tea-tree-oil.jpg" alt="Tea Tree Oil"/>
-          <h3 class="text-center">Tea Tree Oil</h3>
-          <h4 class="text-center">Naturally antibacterial</h4>
-        </div>
-        <div>
-          <p>Tea tree oil is an essential oil harvested from the leaves of the tea tree plant. It’s believed to have powerful antibacterial and antiseptic properties that help purify skin.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["shea_butter"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/shea-butter.png" alt="Shea Butter"/>
-          <h3 class="text-center">Shea Butter</h3>
-          <h4 class="text-center">Gently hydrates</h4>
-        </div>
-        <div>
-          <p>Shea Butter is incredibly nourishing and moisturising for the skin. The concentration of natural vitamins and fatty acids in shea butter makes it a great remedy for dry skin and it helps to protect the skin's natural oils.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["activated_charcoal"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/activated-charcoal.jpg" alt="Activated Charcoal"/>
-          <h3 class="text-center">Activated Charcoal</h3>
-          <h4 class="text-center">Removes toxins</h4>
-        </div>
-        <div>
-          <p>Activated charcoal soap is known to be highly beneficial in the treatment of acne. It not only aids the removal of toxins but also removes skin impurities thus helping in the treatment of acne.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["kaolin_clay"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/kaolin-clay.jpg" alt="Kaolin clay"/>
-          <h3 class="text-center">Kaolin Clay</h3>
-          <h4 class="text-center">Detoxifies</h4>
-        </div>
-        <div>
-          <p>Kaolin clay is known as a powerful detoxifying agent which helps suck out impurities such as; dirt, grime, excess oil and any type of pollutants that are clogging up your pores. It also helps to stimulate, reinvigorate and rejuvenate skin cells and tissues.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["coconut_milk"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/coconut-milk.jpg" alt="Coconut Milk"/>
-          <h3 class="text-center">Coconut Milk</h3>
-          <h4 class="text-center">Prevents wrinkles</h4>
-        </div>
-        <div>
-          <p>Coconut Milk has high levels of vitamin C which helps maintain elasticity and flexibility of the skin. It is also rich in copper and prevents wrinkles, sagging skin and age spots.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["bentonite_clay"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/bentonite-clay.jpg" alt="Bentonite Clay"/>
-          <h3 class="text-center">Bentonite Clay</h3>
-          <h4 class="text-center">Reduces swelling</h4>
-        </div>
-        <div>
-          <p>Bentonite Clay is composed of aged volcanic ash. Bentonite is often used to detoxify toxins, heavy metals, chemicals and other impurities from the skin and body.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["cocoa_butter"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/cocoa-butter.jpg" alt="Cocoa Butter"/>
-          <h3 class="text-center">Cocoa Butter</h3>
-          <h4 class="text-center">Moisturising</h4>
-        </div>
-        <div>
-          <p>Cocoa butter is high in antioxidants, a stretch mark and scar reducer and it is also extremely moisturising.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["pink_clay"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/pink-clay.jpg" alt="Pink Clay"/>
-          <h3 class="text-center">Pink Clay</h3>
-          <h4 class="text-center">Reduces Irritation</h4>
-        </div>
-        <div>
-          <p>Pink Clay is perfect for dry and sensitive skin types. Pink Clay helps to reduce irritation and inflammation from skin concerns such as acne by soothing and balancing skin and promoting healthy cell renewal. It is also beneficial to use on mature skin, lined or wrinkled skin.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["green_clay"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/green-clay.jpg" alt="Green Clay"/>
-          <h3 class="text-center">Green Clay</h3>
-          <h4 class="text-center">Removes toxins</h4>
-        </div>
-        <div>
-          <p>Green Clay is the most effective clay when it comes to drawing impurities and toxins from the skin. It is highly cleansing and also helps to soothe and relax tight or irritated skin.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["wheat_protein"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/wheat.jpg" alt="Wheat Protein"/>
-          <h3 class="text-center">Wheat Protein</h3>
-          <h4 class="text-center">Prevents Breakage</h4>
-        </div>
-        <div>
-          <p>Wheat protein is known to help improve combability, smooth feel (silky feel), moisturisation and help maintain the natural structure of hair.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["avocado_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/avocado-oil.jpg" alt="Avocado Oil"/>
-          <h3 class="text-center">Avocado Oil</h3>
-          <h4 class="text-center">Moisturises and nourishes</h4>
-        </div>
-        <div>
-          <p>Avocado Oil is extremely good at hydrating and softening your skin. The antioxidants and anti-inflammatory agents in avocado oil help your skin stay smooth, strong, and elastic. It is also often recommended as an effective treatment for acne and blackheads.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["hemp_seed_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/hemp-seed-oil.jpg" alt="Hemp Seed Oil"/>
-          <h3 class="text-center">Hemp Seed Oil</h3>
-          <h4 class="text-center">Prevents Breakages</h4>
-        </div>
-        <div>
-          <p>Organic Hemp Seed Oil has many benefits, which help make your hair healthy and luxurious. It moisturises, stimulates growth, prevents breakages and reduces scalp problems. Hemp oil helps to deters dandruff from forming. It prevents itchiness, dryness, and moisturises. It also helps protect your scalp from any infections.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["hemp_seed_oil_body"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/hemp-seed-oil.jpg" alt="Hemp Seed Oil"/>
-          <h3 class="text-center">Hemp Seed Oil</h3>
-          <h4 class="text-center">Moisturises and soothes</h4>
-        </div>
-        <div>
-          <p>Hemp oil is perfect for most skin types as it can moisturize without clogging your pores. It can even help to balance out oily skin, hydrating it and regulating the skin’s oil production.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["rosemary_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/rosemary-oil.jpg" alt="Rosemary Oil"/>
-          <h3 class="text-center">Rosemary Oil</h3>
-          <h4 class="text-center">Stimulates Growth</h4>
-        </div>
-        <div>
-          <p>Rosemary Essential Oil helps to stimulate hair growth. It is used to prevent premature greying and dandruff. It also helps dry or itchy scalp.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["rosemary_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/peppermint-oil.jpg" alt="Peppermint Oil"/>
-          <h3 class="text-center">Peppermint Oil</h3>
-          <h4 class="text-center">Eliminates dandruff</h4>
-        </div>
-        <div>
-          <p>Peppermint Essential Oil has antiseptic properties, which help to cool the scalp, eliminate dandruff and fight lice. It also stimulates hair growth, and gives hair a healthy shine.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["vitamin_e_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/vitamin-e-oil.jpg" alt="Vitamin E Oil"/>
-          <h3 class="text-center">Vitamin E Oil</h3>
-          <h4 class="text-center">For smooth, soft lips</h4>
-        </div>
-        <div>
-          <p>Vitamin E oil promotes cell turnover and regeneration. Using it on dry lips brings new cells to the surface faster.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["coconut_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/coconut-oil.jpg" alt="Coconut Oil"/>
-          <h3 class="text-center">Coconut Oil</h3>
-          <h4 class="text-center">Moisturises and nourishes</h4>
-        </div>
-        <div>
-          <p>Coconut Oil locks the moisture of your lips making them super soft. As it forms a lipid layer it decreases water evaporation and prevents dryness. It's also antibacterial and prevents the growth of bacteria and other germs on cracked lips.</p>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if product.metafields.custom_fields["lavendar_oil"] == 1 %}
-      <div class="col-sm-3 ingredient">
-        <div>
-          <img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/lavendar-oil.jpg" alt="Lavendar Oil"/>
-          <h3 class="text-center">Lavendar Oil</h3>
-          <h4 class="text-center">Stimulates Growth</h4>
-        </div>
-        <div>
-          <p>Lavender Essential Oil has many benefits. It stimulates growth, it has antimicrobial properties, can help detour lice and is good for scalp inflammation and dryness.</p>
-        </div>
-      </div>
-    {% endif %}
-      
-  </div>
- 
-  <hr class="my-7">
-  {% include 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false %}
-
-  </div>
-
-  <div id="test"></div>
-    
+<div class="page-width mt-6" v-if="ingredients">
+  <h2>Key Ingredients</h2>
+  <div class="row">
+    <div class="col-sm-3 ingredient" v-for="ingredient in ingredients">
+      <div><img loading="lazy" :src="ingredient.image.url" :alt="ingredient.title"/></div>
+      <h3 class="text-center">${ingredient.title}$</h3>
+      <h4 class="text-center">${ingredient.subTitle}$</h4>
+      <p>${ingredient.description}$</p>
+    </div>
+  </div>   
 </div>
 
 {% if collection %}
@@ -583,7 +310,7 @@
     </a>
   </div>
 {% endif %}
-
+</div>
 
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
@@ -595,9 +322,13 @@
   
   const ProductPageOptions = {
     name: 'Product Page',
+    delimiters: ["${", "}$"],
     data() {
       return {
-        handle:  '{{ product.handle }}'
+        handle:  '{{ product.handle }}',
+        ingredients: [],
+        allIngredients: null,
+        activeTab: 'description'
       }
     },
     mounted() {
@@ -615,8 +346,14 @@
             query Ingredients {
               product(filter: { shopifyReference: {eq: "${this.handle}"}}) {
               id
+              allIngredients
               ingredients {
                 title
+                description
+                subTitle
+                image {
+                  url(imgixParams: {w: "200", h: "200", crop: focalpoint})
+                }
               }
             }
           }
@@ -625,7 +362,8 @@
       })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
+        this.ingredients = res.data.product.ingredients;
+        this.allIngredients = res.data.product.allIngredients
       })
       .catch((error) => {
         console.log(error);
@@ -635,7 +373,7 @@
 
 
 
-  const ProductPage = Vue.createApp(ProductPageOptions).mount('#test');
+  const ProductPage = Vue.createApp(ProductPageOptions).mount('#product-page');
 </script>
 
 {% schema %}
