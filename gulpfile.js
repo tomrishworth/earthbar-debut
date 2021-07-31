@@ -7,6 +7,15 @@ gulp.task('css', function () {
   return gulp.src('assets/theme.scss').pipe(sass()).pipe(autoprefixer()).pipe(cleanCSS()).pipe(gulp.dest('assets/'));
 });
 
+gulp.task('giftCardCss', function () {
+  return gulp
+    .src('assets/gift-card.scss')
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('assets/'));
+});
+
 gulp.task('watch', function () {
   gulp.watch('assets/**/*.scss', gulp.series('css'));
 });

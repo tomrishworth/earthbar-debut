@@ -33,7 +33,7 @@
         {% capture img_wrapper_id %}CustomImageWrapper--{{ forloop.index }}-{{ block.settings.image.id }}{% endcapture %}
 
         {% unless block.settings.image == blank %}
-          {% include 'image-style' with image: block.settings.image, small_style: false, width: max_height, height: max_height, wrapper_id: img_wrapper_id, img_id: img_id %}
+          {% render 'image-style' with image: block.settings.image, small_style: false, width: max_height, height: max_height, wrapper_id: img_wrapper_id, img_id: img_id %}
         {% endunless %}
       {% endif %}
 
@@ -85,7 +85,7 @@
             {% when 'product' %}
               {%- assign product = all_products[block.settings.product] -%}
               {% if product.title.size > 0 %}
-                {% include 'product-card-grid', max_height: max_height %}
+                {% render 'product-card-grid', max_height: max_height %}
               {% else %}
                 {% comment %}
                   No product yet. Show onboarding one.
@@ -105,7 +105,7 @@
               {% endif %}
             {% when 'collection' %}
               {%- assign collection = collections[block.settings.collection] -%}
-              {% include 'collection-grid-item' %}
+              {% render 'collection-grid-item' %}
             {% when 'html' %}
               {% if block.settings.code != blank %}
                 {{ block.settings.code }}
@@ -118,7 +118,7 @@
   </div>
 
   {% if section.blocks.size == 0 %}
-    {% include 'no-blocks' %}
+    {% render 'no-blocks' %}
   {% endif %}
 </div>
 

@@ -49,7 +49,7 @@
           {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
           {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-          {% include 'image-style' with small_style: true, width: height, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
+          {% render 'image-style' with small_style: true, width: height, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
 
           <div id="{{ img_wrapper_id }}" class="product-single__photo-wrapper js">
             <div id="{{ zoom_img_id }}" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" class="product-single__photo{% if enable_zoom %} js-zoom-enabled{% endif %}{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}{% unless featured_image == image %} hide{% endunless %}" data-image-id="{{ image.id }}"{% if enable_zoom %} data-zoom="{{ image | img_url: product_image_zoom_size, scale: product_image_scale }}"{% endif %}>
@@ -85,7 +85,7 @@
         <div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
           {% if enable_thumbnail_slides == true %}
             <button type="button" class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__prev thumbnails-slider__prev--{{ section.id }}">
-              {% include 'icon-chevron-left' %}
+              {% render 'icon-chevron-left' %}
               <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
             </button>
           {% endif %}
@@ -103,7 +103,7 @@
           </ul>
           {% if enable_thumbnail_slides == true %}
             <button type="button" class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__next thumbnails-slider__next--{{ section.id }}">
-              {% include 'icon-chevron-right' %}
+              {% render 'icon-chevron-right' %}
               <span class="icon__fallback-text">{{ 'sections.slideshow.next_slide' | t }}</span>
             </button>
           {% endif %}
@@ -131,7 +131,7 @@
 
         <div>
           <div class="featured-product__price">
-            {% include 'product-price', variant: current_variant %}
+            {% render 'product-price', variant: current_variant %}
           </div>
 
           {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
@@ -147,7 +147,7 @@
 
           {% if section.settings.show_quantity_selector %}
             <div id="error-quantity-{{ section.id }}" class="form-message form-message--error product__quantity-error hide" tabindex="-1">
-              {% include 'icon-error' %} {{ 'products.product.quantity_minimum_message' | t }}
+              {% render 'icon-error' %} {{ 'products.product.quantity_minimum_message' | t }}
             </div>
           {% endif %}
 
@@ -234,7 +234,7 @@
         </div>
 
         {% if section.settings.show_share_buttons %}
-          {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+          {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
         {% endif %}
       </div>
     </div>

@@ -38,12 +38,12 @@
 
     {%- if page_description -%}
     <meta name="description" content="{{ page_description | escape }}" />
-    {%- endif -%} {% include 'social-meta-tags' %}
+    {%- endif -%} {% render 'social-meta-tags' %}
 
     {{ 'theme.css' | asset_url | stylesheet_tag }}
 
     <link href="https://earthbar.s3-ap-southeast-2.amazonaws.com/earthbar-utilities.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://unpkg.com/vue@3.1.5" ></script>
    
     <script>
       var theme = {
@@ -97,9 +97,8 @@
   {{
       content_for_header
     }}
-    {% include 'judgeme_core' %}
+    {% render 'judgeme_core' %}
   
-  {% render 'shogun-head' %}
 </head>
 
   <body class="template-{{ template | split: '.' | first }}">
@@ -130,14 +129,14 @@
               aria-label="{{ 'general.search.placeholder' | t }}"
             />
             <button class="search-bar__submit search__submit btn--link" type="submit">
-              {% include 'icon-search' %}
+              {% render 'icon-search' %}
               <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
             </button>
           </form>
         </div>
         <div class="search-bar__table-cell text-right">
           <button type="button" class="btn--link search-bar__close js-drawer-close">
-            {% include 'icon-close' %}
+            {% render 'icon-close' %}
             <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
           </button>
         </div>
@@ -155,17 +154,18 @@
       
       {% section 'footer' %}
 
+      
+
     </div>
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
     </ul>
 
-    {% include 'ajaxify-cart' %}
-   {% include 'smile-initializer' %}
+    {% render 'ajaxify-cart' %}
+   {% render 'smile-initializer' %}
 
-
-{% include 'swymSnippet' %}
+    {{ 'app.js' | asset_url | script_tag }}
 
 </body>
 </html>
