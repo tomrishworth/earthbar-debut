@@ -50,7 +50,7 @@
         {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
         {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-        {% include 'image-style' with small_style: true, width: height, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
+        {% render 'image-style' with small_style: true, width: height, height: height, wrapper_id: img_wrapper_id, img_id: img_id %}
 
         <div id="{{ img_wrapper_id }}" class="product-single__photo-wrapper js">
           <div
@@ -85,7 +85,7 @@
         <div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
           {% if enable_thumbnail_slides == true %}
             <button type="button" class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__prev thumbnails-slider__prev--{{ section.id }}">
-              {% include 'icon-chevron-left' %}
+              {% render 'icon-chevron-left' %}
               <span class="icon__fallback-text">{{ 'sections.slideshow.previous_slide' | t }}</span>
             </button>
           {% endif %}
@@ -103,7 +103,7 @@
           </ul>
           {% if enable_thumbnail_slides == true %}
             <button type="button" class="btn btn--link medium-up--hide thumbnails-slider__btn thumbnails-slider__next thumbnails-slider__next--{{ section.id }}">
-              {% include 'icon-chevron-right' %}
+              {% render 'icon-chevron-right' %}
               <span class="icon__fallback-text">{{ 'sections.slideshow.next_slide' | t }}</span>
             </button>
           {% endif %}
@@ -117,7 +117,7 @@
         <h1 class="product-single__title">{{ product.title }}</h1>
 
         <div class="mb-3">
-          {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
+          {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
         </div>
 
         
@@ -135,7 +135,7 @@
 
           {% if section.settings.show_quantity_selector %}
             <div id="error-quantity-{{ section.id }}" class="form-message form-message--error product__quantity-error hide" tabindex="-1">
-              {% include 'icon-error' %} {{ 'products.product.quantity_minimum_message' | t }}
+              {% render 'icon-error' %} {{ 'products.product.quantity_minimum_message' | t }}
             </div>
           {% endif %}
 
@@ -147,7 +147,7 @@
           {% form 'product', product, class:form_classes, novalidate: 'novalidate' %}
             <div class="  ">
               <div class="product__price">
-                {% include 'product-price', variant: current_variant %}
+                {% render 'product-price', variant: current_variant %}
               </div>
             </div>
             {% unless product.has_only_default_variant %}
@@ -275,13 +275,10 @@
 
         </div>
 
-        
-
-       
 
         {% if section.settings.show_share_buttons %}
           <div class="mt-4"> 
-            {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+            {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
           </div>
         {% endif %}
        
@@ -291,7 +288,8 @@
   </div>
 </div>
 <div class="page-width mt-6" v-if="ingredients">
-  <h2>Key Ingredients</h2>
+  <hr>
+  <h2 class="mb-5">Key Ingredients</h2>
   <div class="row">
     <div class="col-sm-3 ingredient" v-for="ingredient in ingredients">
       <div><img loading="lazy" :src="ingredient.image.url" :alt="ingredient.title"/></div>
@@ -305,7 +303,7 @@
 {% if collection %}
   <div class="text-center return-link-wrapper page-width">
     <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
-      {% include 'icon-arrow-left' %}
+      {% render 'icon-arrow-left' %}
       {{ 'products.product.back_to_collection' | t: title: collection.title }}
     </a>
   </div>
