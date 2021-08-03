@@ -459,29 +459,9 @@
         "settings": {
           "title": ""
         }
-      },
-      "1606429741a3a8bd9c": {
-        "type": "custom-content",
-        "disabled": true,
-        "blocks": {
-          "46f1a91d-9fc9-402d-82ba-e35722ff2bca": {
-            "type": "html",
-            "settings": {
-              "code": "<div style=\"background-color: #000; color: #fff\" class=\"d-sm-flex align-items-center\">\n  <div>\n    <img width=\"400\" src=\"https:\/\/res.cloudinary.com\/atmosphere-studios\/image\/upload\/v1606430336\/earthbar\/do-black-friday-and-cyber-monday-promotional-banner.png\">\n  <\/div>\n  <div class=\"pl-4\">\n    <p class=\"mb-0\" style=\"color: #fff\">We are having a<\/p>\n    <h1>Black Friday Sale!<br> 25% off everything!<\/h1>\n    <p style=\"color: #fff\">\n      Use the coupon code\n      <span style=\"background-color: #e60303; color: #fff; padding: 5px; font-weight: bold; border-radius: 6px\">25off<\/span>\n      at checkout to get the discount.<br>Offer ends 1 December\n    <\/p>\n  <\/div>\n<\/div>",
-              "width": "100%"
-            }
-          }
-        },
-        "block_order": [
-          "46f1a91d-9fc9-402d-82ba-e35722ff2bca"
-        ],
-        "settings": {
-          "title": ""
-        }
       }
     },
     "content_for_index": [
-      "1606429741a3a8bd9c",
       "1561710528294",
       "1562728294086",
       "1579114233532",
