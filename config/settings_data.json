@@ -191,7 +191,6 @@
       },
       "1543257410877": {
         "type": "custom-content",
-        "disabled": true,
         "blocks": {
           "1551344081931": {
             "type": "text",
@@ -460,12 +459,6 @@
         "settings": {
           "title": ""
         }
-      },
-      "1627959268e0541dc3": {
-        "type": "sswinstagram",
-        "settings": {
-          "option_galleries_id": "data-gallery_id=\"1\" data-widget=\"0\""
-        }
       }
     },
     "content_for_index": [
@@ -483,8 +476,7 @@
       "1584346749995",
       "1562705524987",
       "1562566118907",
-      "1543257410877",
-      "1627959268e0541dc3"
+      "1543257410877"
     ]
   },
   "presets": {
