@@ -7322,11 +7322,15 @@ $toolbar-height-small: 46px;
 
 .feature-icons {
   text-align: center;
-  // color: #3B6C72;
-  // text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
   line-height: 1.2;
+}
+
+.feature-icon {
+  width: 110px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .feature-icon-image {

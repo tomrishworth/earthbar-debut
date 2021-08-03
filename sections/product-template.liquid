@@ -213,30 +213,17 @@
           role="status"
         ></p>
 
-
-
-        {% comment %} {% if product.type == 'Deodorant' %}
-
-          <ul class="feature-icons row mt-6">
-            <li class="feature-icon col-6 col-sm-3">
-              <div class="feature-icon-image"><img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/aluminium-icon.svg" alt="Aluminium Free"></div>
-              <div>Aluminium Free</div>
-            </li>
-            <li class="feature-icon col-6 col-sm-3">
-              <div class="feature-icon-image"><img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/skin-types-icon.svg" alt="Suitable for all skin types"></div>
-              <div>Suitable for all skin types</div>
-            </li>
-            <li class="feature-icon col-6 col-sm-3">
-              <div class="feature-icon-image"><img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/natural-icon.svg" alt="100% Naturally Derived"></div>
-              <div>100% Naturally Derived</div>
-            </li>
-            <li class="feature-icon col-6 col-sm-3">
-              <div class="feature-icon-image"><img src="https://earthbar.s3-ap-southeast-2.amazonaws.com/vegan.svg" alt="Vegan"></div>
-              <div>Vegan</div>
-            </li>
-          </ul>
-
-        {% endif %} {% endcomment %}
+        {% comment %} Feature Icons {% endcomment %}
+        <div v-if="collection">
+          <div v-if="collection.featureIcons">
+            <ul class="feature-icons row mt-6 mb-6">
+              <li class="feature-icon" v-for="featureIcon in collection.featureIcons">
+                <div class="feature-icon-image"><img loading="lazy" :src="featureIcon.icon.url" alt="featureIcon.title" /></div>
+                <h3 class="text-sm">${ featureIcon.title }$</h3>
+              </li>
+            </ul> 
+          </div> 
+        </div>
 
         <div class="tabs" >
           <div class="tab-buttons">
@@ -323,10 +310,17 @@
     delimiters: ["${", "}$"],
     data() {
       return {
-        handle:  '{{ product.handle }}',
+        productHandle:  '{{ product.handle }}',
+        collectionHandle: '{{ product.type }}',
         ingredients: [],
+        collection: null,
         allIngredients: null,
         activeTab: 'description'
+      }
+    },
+    computed: {
+      collectionHandleLowercase() {
+        return this.collectionHandle.toLowerCase().replace(/ +/g, '-');
       }
     },
     mounted() {
@@ -341,8 +335,17 @@
         body: JSON.stringify({
           variables: {},
           query: ` 
-            query Ingredients {
-              product(filter: { shopifyReference: {eq: "${this.handle}"}}) {
+            query {
+              collection(filter: {shopifyCollectionHandle: {eq: "${this.collectionHandleLowercase}"}}) {
+                title
+                featureIcons {
+                  icon {
+                    url
+                  }
+                  title
+                }
+              }
+              product(filter: { shopifyReference: {eq: "${this.productHandle}"}}) {
               id
               allIngredients
               ingredients {
@@ -361,6 +364,7 @@
       .then((res) => res.json())
       .then((res) => {
         this.ingredients = res.data.product.ingredients;
+        this.collection = res.data.collection;
         this.allIngredients = res.data.product.allIngredients
       })
       .catch((error) => {

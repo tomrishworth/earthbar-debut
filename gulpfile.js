@@ -4,12 +4,12 @@ const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('css', function () {
-  return gulp.src('assets/theme.scss').pipe(sass()).pipe(autoprefixer()).pipe(cleanCSS()).pipe(gulp.dest('assets/'));
+  return gulp.src('src/scss/theme.scss').pipe(sass()).pipe(autoprefixer()).pipe(cleanCSS()).pipe(gulp.dest('assets/'));
 });
 
 gulp.task('giftCardCss', function () {
   return gulp
-    .src('assets/gift-card.scss')
+    .src('src/scss/gift-card.scss')
     .pipe(sass())
     .pipe(autoprefixer())
     .pipe(cleanCSS())
@@ -17,5 +17,5 @@ gulp.task('giftCardCss', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('assets/**/*.scss', gulp.series('css'));
+  gulp.watch('src/**/*.scss', gulp.series('css'));
 });
