@@ -287,6 +287,11 @@
   </div>   
 </div>
 
+<hr class="my-7">
+<div class="page-width mt-6">
+{% include 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false %}
+</div>
+
 {% if collection %}
   <div class="text-center return-link-wrapper page-width">
     <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">

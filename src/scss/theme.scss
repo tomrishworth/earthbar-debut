@@ -541,45 +541,7 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
-@font-face {
-  font-family: 'Work Sans';
-  font-weight: 600;
-  font-style: normal;
-  src: url('https://fonts.shopifycdn.com/work_sans/worksans_n6.136d99375282ffb6ea8c3dc4a8fe189c7be691b2.woff2?h1=ZWFydGhiYXIuY28ubno&hmac=78fbe06a6cf601ef90d34634b8d298ed12b09aa6aea83d7c332e93ad170c87ff')
-      format('woff2'),
-    url('https://fonts.shopifycdn.com/work_sans/worksans_n6.399ae4c4dd52d38e3f3214ec0cc9c61a0a67ea08.woff?h1=ZWFydGhiYXIuY28ubno&hmac=b3502ace3f06135295912683c06954d0f1ecf71557b4625bd43de366d65630e1')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  font-weight: 400;
-  font-style: normal;
-  src: url('https://fonts.shopifycdn.com/work_sans/worksans_n4.29e3afeb38a0ba35e784cf169a40e8beaf814daa.woff2?h1=ZWFydGhiYXIuY28ubno&hmac=bb5ab15dc031ee3e542a75cfa916554a8a2fff09bdfc1e07c03d8723b05a3f18')
-      format('woff2'),
-    url('https://fonts.shopifycdn.com/work_sans/worksans_n4.e7c533c4afbed28070f6ac45dbcfe6f37840c0a8.woff?h1=ZWFydGhiYXIuY28ubno&hmac=583ad0b2cca3f797808ceaea2f2a78463282a137ec3a30574be1ae86ba340408')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  font-weight: 700;
-  font-style: normal;
-  src: url('https://fonts.shopifycdn.com/work_sans/worksans_n7.35eac55373d3da50c529c81066eb2f2f0fbedb82.woff2?h1=ZWFydGhiYXIuY28ubno&hmac=9cbb2a94e262da7b859ee5751faede035f47a4a9da9794938cebea8550a6ea48')
-      format('woff2'),
-    url('https://fonts.shopifycdn.com/work_sans/worksans_n7.1b010d40a44f517d5363112c4aff386332758bc9.woff?h1=ZWFydGhiYXIuY28ubno&hmac=537ef7c9b473061e7122c43852531b06262a2cc3a30cc75e9ed14fe75248b492')
-      format('woff');
-}
-
-@font-face {
-  font-family: 'Work Sans';
-  font-weight: 700;
-  font-style: normal;
-  src: url('https://fonts.shopifycdn.com/work_sans/worksans_n7.35eac55373d3da50c529c81066eb2f2f0fbedb82.woff2?h1=ZWFydGhiYXIuY28ubno&hmac=9cbb2a94e262da7b859ee5751faede035f47a4a9da9794938cebea8550a6ea48')
-      format('woff2'),
-    url('https://fonts.shopifycdn.com/work_sans/worksans_n7.1b010d40a44f517d5363112c4aff386332758bc9.woff?h1=ZWFydGhiYXIuY28ubno&hmac=537ef7c9b473061e7122c43852531b06262a2cc3a30cc75e9ed14fe75248b492')
-      format('woff');
-}
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
 
 $font-weight-body--bold: 700;
 $font-weight-body--bolder: 700;
