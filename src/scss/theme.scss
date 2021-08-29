@@ -4323,6 +4323,12 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   }
 }
 
+.dynamic-checkout__content {
+  ul {
+    justify-content: flex-end;
+  }
+}
+
 /*================ MODULES ================*/
 .site-header {
   background-color: $color-body;
