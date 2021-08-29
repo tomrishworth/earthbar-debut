@@ -3701,13 +3701,15 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   white-space: normal;
   margin-top: 0;
   min-height: 44px;
-  background-color: $teal-dark;
+  background-color: #ffa41c;
+  color: #361a0f;
   @include media-query($medium-up) {
     padding-left: 30px;
     padding-right: 30px;
   }
   &:hover {
-    background-color: darken($teal-dark, 10%) !important;
+    background-color: darken(#ffa41c, 10%) !important;
+    color: #361a0f !important;
   }
 
   .product-single--small-image &,
@@ -7293,11 +7295,17 @@ $toolbar-height-small: 46px;
   width: 110px;
   padding-left: 15px;
   padding-right: 15px;
+  color: $color-body-text;
 }
 
 .feature-icon-image {
-  height: 50px;
+  margin: 0 auto;
   margin-bottom: 15px;
+  img {
+    object-fit: contain;
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .features {

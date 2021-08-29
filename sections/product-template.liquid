@@ -111,7 +111,7 @@
       {% endif %}
     </div>
 
-    <div class="grid__item {{ product_description_width }}">
+    <div class="grid__item {{ product_description_width }} pl-sm-8">
       <div class="product-single__meta mb-6">
 
         <h1 class="product-single__title">{{ product.title }}</h1>
@@ -213,17 +213,7 @@
           role="status"
         ></p>
 
-        {% comment %} Feature Icons {% endcomment %}
-        <div v-if="collection">
-          <div v-if="collection.featureIcons">
-            <ul class="feature-icons row mt-6 mb-6">
-              <li class="feature-icon" v-for="featureIcon in collection.featureIcons">
-                <div class="feature-icon-image"><img loading="lazy" :src="featureIcon.icon.url" alt="featureIcon.title" /></div>
-                <h3 class="text-sm">${ featureIcon.title }$</h3>
-              </li>
-            </ul> 
-          </div> 
-        </div>
+       
 
         <div class="tabs" >
           <div class="tab-buttons">
@@ -232,6 +222,17 @@
             {% if product.type == 'Soap' %}<button  type="button" :class="{'active': activeTab === 'notes' }" @click="activeTab = 'notes'">Notes</button>  {% endif %}
           </div>
           <div v-if="activeTab === 'description'" >
+             {% comment %} Feature Icons {% endcomment %}
+            <div v-if="collection">
+              <div v-if="collection.featureIcons">
+                <ul class="feature-icons row mt-5 mb-2">
+                  <li class="feature-icon" v-for="featureIcon in collection.featureIcons">
+                    <div class="feature-icon-image"><img loading="lazy" :src="featureIcon.icon.url" alt="featureIcon.title" /></div>
+                    <h3 class="text-sm">${ featureIcon.title }$</h3>
+                  </li>
+                </ul> 
+              </div> 
+            </div>
             <div class="product-single__description rte">
               {{ product.description }}
               {% if product.type == 'Soap' %}
