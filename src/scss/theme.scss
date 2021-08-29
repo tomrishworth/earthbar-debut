@@ -3678,13 +3678,14 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   input {
     width: 60px;
     padding: 10px 18px;
-    border-color: darken($light-blue, 10%);
+    // border-color: darken($light-blue, 10%);
+    border-color: #949494;
   }
   .btn {
     padding: 10px;
     font-size: 18px;
     &:hover {
-      background-color: darken($light-blue, 10%);
+      background-color: #eee;
     }
   }
 }
@@ -3701,15 +3702,15 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   white-space: normal;
   margin-top: 0;
   min-height: 44px;
-  background-color: #ffa41c;
-  color: #361a0f;
+  background-color: #ed8246;
+  color: #3a1707;
   @include media-query($medium-up) {
     padding-left: 30px;
     padding-right: 30px;
   }
   &:hover {
-    background-color: darken(#ffa41c, 10%) !important;
-    color: #361a0f !important;
+    background-color: darken(#ed8246, 10%) !important;
+    color: #3a1707 !important;
   }
 
   .product-single--small-image &,
