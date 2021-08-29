@@ -220,6 +220,7 @@
       },
       "1551409454354": {
         "type": "collection",
+        "disabled": true,
         "settings": {
           "title": "Lip Balms",
           "collection": "lip-balms-homepage",
