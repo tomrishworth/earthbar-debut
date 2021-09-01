@@ -7448,3 +7448,59 @@ $toolbar-height-small: 46px;
 // .icon-wishlist {
 //   stroke: #361a0f;
 // }
+
+// icart Overrides
+
+.icart {
+  .icart-header {
+    padding: 15px;
+    .icart-header-title {
+      text-align: left;
+    }
+  }
+  .icart-list {
+    .icart-item-content {
+      a {
+        text-decoration: underline;
+        .icart-item-title {
+          color: #333;
+          font-size: 13px !important;
+          font-weight: normal !important;
+        }
+      }
+      .icart-product-price {
+        font-weight: 600;
+      }
+    }
+    .icart-item-quantity {
+      a.icart-item-remove {
+        font-weight: normal;
+        text-decoration: underline;
+      }
+    }
+  }
+  .icart-final-total {
+    .icart-cart-total label {
+      font-weight: 600 !important;
+    }
+    .icart-cart-price label {
+      font-weight: 600 !important;
+    }
+  }
+  .icart-checkout-btn {
+    display: flex;
+    .icartCheckoutBtn {
+      margin-top: 0 !important;
+      display: block;
+    }
+    .icartContinueShopping {
+      background-color: transparent;
+      margin-right: 5px !important;
+    }
+  }
+  .icart-product-upsell-block {
+    .icart-content-title {
+      padding-top: 15px !important;
+    }
+  }
+}
