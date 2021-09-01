@@ -7473,6 +7473,14 @@ $toolbar-height-small: 46px;
       }
     }
     .icart-item-quantity {
+      .icartMinus,
+      .icartPlus {
+        border-radius: 0 !important;
+      }
+      .icart-qty-picker {
+        border-left: none !important;
+        border-right: none !important;
+      }
       a.icart-item-remove {
         font-weight: normal;
         text-decoration: underline;
@@ -7500,7 +7508,10 @@ $toolbar-height-small: 46px;
   }
   .icart-product-upsell-block {
     .icart-content-title {
-      padding-top: 15px !important;
+      padding-top: 20px !important;
+    }
+    .icart-product-upsell {
+      padding-bottom: 10px;
     }
   }
 }
