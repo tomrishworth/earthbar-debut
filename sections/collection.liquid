@@ -52,9 +52,16 @@
   {% if section.settings.show_view_all %}
     <hr class="hr--invisible" aria-hidden="true" />
     <div class="text-center">
+      {% if section.settings.view_all_link_text and section.settings.view_all_link_url %}
+      <a href="{{ section.settings.view_all_link_url }}" class="btn" aria-label="{{ section.settings.view_all_link_text }}">
+        {{ section.settings.view_all_link_text }}
+      </a>
+      {% else %}
       <a href="{{ collection.url }}" class="btn" aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
         {{ 'collections.general.view_all' | t }}
       </a>
+    {% endif %}
+
     </div>
   {% endif %}
 
@@ -171,6 +178,20 @@
         "pt-BR": "Exibir botão 'Visualizar tudo'"
       },
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "view_all_link_text",
+      "label": {
+        "en": "View All Button Text"
+      }
+    },
+    {
+      "type": "url",
+      "id": "view_all_link_url",
+      "label": {
+        "en": "View All Button URL"
+      }
     }
   ],
   "presets": [
