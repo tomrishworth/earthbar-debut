@@ -104,7 +104,9 @@
           "grid": 4,
           "rows": 1,
           "show_vendor": false,
-          "show_view_all": true
+          "show_view_all": true,
+          "view_all_link_text": "View our range of handmade soaps",
+          "view_all_link_url": "shopify:\/\/collections\/soap"
         }
       },
       "footer": {
@@ -227,7 +229,9 @@
           "grid": 3,
           "rows": 1,
           "show_vendor": false,
-          "show_view_all": true
+          "show_view_all": true,
+          "view_all_link_text": "",
+          "view_all_link_url": ""
         }
       },
       "related-products": {
@@ -292,7 +296,9 @@
           "grid": 4,
           "rows": 1,
           "show_vendor": false,
-          "show_view_all": false
+          "show_view_all": false,
+          "view_all_link_text": "View All Haircar",
+          "view_all_link_url": ""
         }
       },
       "1562566118907": {
@@ -338,7 +344,9 @@
           "grid": 2,
           "rows": 1,
           "show_vendor": false,
-          "show_view_all": false
+          "show_view_all": false,
+          "view_all_link_text": "",
+          "view_all_link_url": ""
         }
       },
       "1579114233532": {
@@ -417,7 +425,9 @@
           "grid": 4,
           "rows": 1,
           "show_vendor": false,
-          "show_view_all": false
+          "show_view_all": false,
+          "view_all_link_text": "",
+          "view_all_link_url": ""
         }
       },
       "1593892603784": {
@@ -428,7 +438,9 @@
           "grid": 3,
           "rows": 2,
           "show_vendor": false,
-          "show_view_all": false
+          "show_view_all": false,
+          "view_all_link_text": "",
+          "view_all_link_url": ""
         }
       },
       "1594585289622": {
