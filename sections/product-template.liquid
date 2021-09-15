@@ -1,3 +1,4 @@
+{% comment %} {% include 'store.js' %} {% endcomment %}
 <div id="product-page">
 <div class="product-template__container page-width"
   id="ProductSection-{{ section.id }}"
@@ -144,6 +145,8 @@
           {%- endcapture %}
 
           <div class="form-spacer"></div>
+          
+
           {% form 'product', product, class:form_classes, novalidate: 'novalidate' %}
             <div class="  ">
               <div class="product__price">
@@ -156,7 +159,7 @@
                   <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
                     {{ option.name }}
                   </label>
-                  <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                  <select @change="variant_from_options" v-model="variant_selection.option{{ option.position }}" class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
                     {% for value in option.values %}
                       <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
                     {% endfor %}
@@ -165,7 +168,7 @@
               {% endfor %}
             {% endunless %}
 
-            <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+           <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants">
               {% for variant in product.variants %}
                 {% if variant.available %}
                   <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
@@ -175,27 +178,35 @@
                   <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
                 {% endif %}
               {% endfor %}
-            </select>
+            </select> 
+
+
             
             <div class="quantity-add-wrapper">
               {% if section.settings.show_quantity_selector %}
                 <div class="product-form__item product-form__item--quantity">
                   <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
-                  <button type="button" class="btn btn--link d-none d-sm-inline" id="minus">-</button>
-                  <input type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" class="product-form__input" pattern="[0-9]*">
-                  <button type="button" class="btn btn--link d-none d-sm-inline" id="plus">+</button>
+                  <button :disabled="quantity == 1" type="button" class="btn btn--link d-none d-sm-inline" @click="quantity--" >-</button>
+                  <input type="number" id="Quantity-{{ section.id }}" v-model="quantity" min="1" class="product-form__input" pattern="[0-9]*">
+                  <button type="button" class="btn btn--link d-none d-sm-inline" @click="quantity++"  >+</button>
                 </div>
               {% endif %}
-
               <div class="product-form__item product-form__item--submit{% if section.settings.enable_payment_button %} product-form__item--payment-button{% endif %}{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
-                <button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
-                  <span id="AddToCartText-{{ section.id }}">
-                    {% unless current_variant.available %}
-                      {{ 'products.product.sold_out' | t }}
-                    {% else %}
-                      {{ 'products.product.add_to_cart' | t }}
-                    {% endunless %}
-                  </span>
+                <button @click.prevent="handleAddToCart(current_variant_id, quantity)" type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                  <template v-if="loading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="ml-1">Adding to cart...</span>
+                  </template>
+                  <template v-else>
+                    {% include 'icon-cart' %}
+                    <span id="AddToCartText-{{ section.id }}">
+                      {% unless current_variant.available %}
+                        {{ 'products.product.sold_out' | t }}
+                      {% else %}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {% endunless %}
+                    </span>
+                </template>
                 </button>
                 {% if section.settings.enable_payment_button %}
                   {{ form | payment_button }}
@@ -203,6 +214,18 @@
               </div>
             </div>
           {% endform %}
+          <div class="cart-error d-flex justify-content-between" v-if="errorMessage" >
+            <div class="mr-4">{% render 'icon-error' %}</div>
+            <div>
+              <p>Max quantity available reached</p>
+              <div v-html="errorMessage"></div>
+            </div>
+            <div class="ml-4">
+              <button class="close-btn" @click="dismissError"> {% render 'icon-close' %}</button>
+            </div>
+          </div>
+          
+
         </div>
 
         {%- comment -%}
@@ -218,7 +241,7 @@
         <div class="tabs" >
           <div class="tab-buttons">
             <button type="button" :class="{'active': activeTab === 'description' }" @click="activeTab = 'description'">Description</button>
-            <button type="button" :class="{'active': activeTab === 'ingredients' }" @click="activeTab = 'ingredients'">Ingredients</button>
+            <button v-if="ingredients.length" type="button" :class="{'active': activeTab === 'ingredients' }" @click="activeTab = 'ingredients'">Ingredients</button>
             {% if product.type == 'Soap' %}<button  type="button" :class="{'active': activeTab === 'notes' }" @click="activeTab = 'notes'">Notes</button>  {% endif %}
           </div>
           <div v-if="activeTab === 'description'" >
@@ -316,17 +339,76 @@
     delimiters: ["${", "}$"],
     data() {
       return {
+        loading: false,
+        errorMsg: null,
+        quantity: 1,
+        current_variant_id: '{{ product.selected_or_first_available_variant.id }}',
         productHandle:  '{{ product.handle }}',
         collectionHandle: '{{ product.type }}',
         ingredients: [],
         collection: null,
         allIngredients: null,
-        activeTab: 'description'
+        activeTab: 'description',
+        variant_selection: {
+          option1: "{{ product.options_with_values[0].selected_value }}",
+          option2: "{{ product.options_with_values[1].selected_value }}",
+          option3: "{{ product.options_with_values[2].selected_value }}"
+        },
+        variants: [
+          {% for variant in product.variants %}
+            {
+              id: "{{variant.id}}",
+              available: {{ variant.available }},
+              option1: "{{ variant.option1 }}",
+              option2: "{{ variant.option2 }}",
+              option3: "{{ variant.option3 }}",
+              price: "{{ variant.price | money }}",
+              {% assign img_url = variant.image.src | img_url: '500x', scale: 2 %}
+              image: "{% unless img_url contains 'no-image' %}{{ img_url }}{% endunless %}"
+
+            },
+          {% endfor %} 
+        ],
+        fallback_product_image: "{{ featured_image | img_url: '500x', scale: 2 }}"
+      }
+    },
+    methods: {
+      async handleAddToCart(id, quantity) {
+        this.error = ''
+        this.loading = true
+        try {
+          await store.dispatch('add_to_cart', {id, quantity});
+        } catch (e) {
+          this.error = e
+        }
+        this.loading = false
+      },
+      dismissError() {
+        store.dispatch('dismiss_error');
+      },
+      variant_from_options() {
+        const variant = this.variants.find((variant) => {
+          var match = true;
+          if(variant.option1 != '') {
+            match = variant.option1 == this.variant_selection.option1
+          }
+          if(match && variant.option2 != '') {
+            match = variant.option2 == this.variant_selection.option2
+          }
+          if(match && variant.opition3 != '') {
+            match = variant.option3 == this.variant_selection.option3
+          } 
+          return match;
+        });
+        this.current_variant_id = variant.id
       }
     },
     computed: {
       collectionHandleLowercase() {
         return this.collectionHandle.toLowerCase().replace(/ +/g, '-');
+      },
+      errorMessage() {
+        return store.state.error
       }
     },
     mounted() {
@@ -369,9 +451,11 @@
       })
       .then((res) => res.json())
       .then((res) => {
-        this.ingredients = res.data.product.ingredients;
+        if(res.data.product) {
+          this.ingredients = res.data.product.ingredients;
+          this.allIngredients = res.data.product.allIngredients
+        }
         this.collection = res.data.collection;
-        this.allIngredients = res.data.product.allIngredients
       })
       .catch((error) => {
         console.log(error);
@@ -381,7 +465,9 @@
 
 
 
-  const ProductPage = Vue.createApp(ProductPageOptions).mount('#product-page');
+  const ProductPage = Vue.createApp(ProductPageOptions)
+  ProductPage.mount('#product-page');
+  ProductPage.use(store)
 </script>
 
 {% schema %}

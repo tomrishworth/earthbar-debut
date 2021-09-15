@@ -1,3 +1,5 @@
+{% comment %} {% include 'store.js' %} {% endcomment %}
+<div id="product-card-{{ product.id }}" >
 <div class="grid-view-item{% unless product.available %} grid-view-item--sold-out{% endunless %} product-card">
   <a
     class="grid-view-item__link grid-view-item__image-container full-width-link"
@@ -6,9 +8,11 @@
     <span class="visually-hidden">{{ product.title }}</span>
   </a>
 
-  {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %} {% capture wrapper_id
-  %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %} {%- assign img_url =
-  product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%} {% unless product.featured_image == blank
+  {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %} 
+  {% capture wrapper_id%}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %} 
+  {% assign img_alt = product.title %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%} {% unless product.featured_image == blank
   %} {% include 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style:
   true, wrapper_id: wrapper_id, img_id: img_id %} {% endunless %}
 
@@ -26,7 +30,7 @@
         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
         data-aspectratio="{{ product.featured_image.aspect_ratio }}"
         data-sizes="auto"
-        alt=""
+        alt="{{ img_alt }}"
       />
     </div>
   </div>
@@ -42,19 +46,139 @@
   </noscript>
 
   <div class="h4 grid-view-item__title product-card__title" aria-hidden="true">{{ product.title }}</div>
+  {% comment %} {% include 'product-price', variant: product %}  {% endcomment %}
+  <div class="product-price font-weight-semibold">${ current_variant.price}$</div>
+  {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
+  
+</div>
+  <div class="d-sm-flex justify-content-center align-items-center">
+    {{ product.current_variant.id }}
 
-  {% include 'product-price', variant: product %} {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge',
-  jm_style: '', concierge_install: false %}
+    {% unless product.has_only_default_variant %}
+      {% for option in product.options_with_values %}
+        <div class="product-form__item d-sm-flex align-items-baseline mr-sm-2 mb-2 mb-sm-0">
+          <label class="mr-sm-1" for="SingleOptionSelector-{{ forloop.index0 }}">
+            {{ option.name }}
+          </label>
+          <select @change="variant_from_options" v-model="variant_selection.option{{ option.position }}" class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+            {% for value in option.values %}
+              <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endfor %}
+    {% endunless %}
+
+    <div>
+      <button @click="handleAddToCart(current_variant_id)" type="submit" class="btn btn--secondary btn-sm">
+        {% comment %} {% include 'icon-cart' %} <span class="pull-down-1">Add to cart</span> {% endcomment %}
+        <template v-if="loading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span class="ml-1">Adding to cart...</span>
+        </template>
+        <template v-else>
+          <span class="d-none d-sm-inline-block">{% include 'icon-cart' %}</span>
+          <span id="AddToCartText-{{ section.id }}">
+            {% unless current_variant.available %}
+              {{ 'products.product.sold_out' | t }}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endunless %}
+          </span>
+      </template>
+      </button>
+    </div>
+  </div>
 </div>
 
-<form method="post" action="/cart/add">
+{% comment %} <form method="post" action="/cart/add">
   <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
   <div class="text-center">
-    {% comment %} <input min="1" type="number" id="quantity" name="quantity" value="1" /> {% endcomment %} {% comment %}
-    <input type="submit" value="Add to cart" class="btn btn-outline btn-sm" /> {% endcomment %}
-    <button type="submit" class="btn btn--secondary btn-sm mb-2 d-none d-sm-inline-block">
+    <button @click.prevent="handleAddToCart({{ current_variant.id }})" type="submit" class="btn btn--secondary btn-sm mb-2 d-none d-sm-inline-block">
       {% include 'icon-cart' %} <span class="pull-down-1">Add to cart</span>
     </button>
-    <button type="submit" class="btn btn--secondary btn-sm mb-2 d-sm-none">Add to cart</button>
+    <button @click.prevent="handleAddToCart({{ current_variant.id }})" type="submit" class="btn btn--secondary btn-sm mb-2 d-sm-none">Add to cart</button>
   </div>
-</form>
+</form> {% endcomment %}
+
+
+
+<script>
+  
+const ProductCardOptions{{product.id}} = {
+  name: 'Product Card',
+  delimiters: ["${", "}$"],
+  data() {
+    return {
+      loading: false,
+      quantity: 1,
+      current_variant_id: '{{ product.selected_or_first_available_variant.id }}',
+      variant_selection: {
+        option1: "{{ product.options_with_values[0].selected_value }}",
+        option2: "{{ product.options_with_values[1].selected_value }}",
+        option3: "{{ product.options_with_values[2].selected_value }}"
+      },
+      variants: [
+        {% for variant in product.variants %}
+          {
+            id: "{{variant.id}}",
+            available: {{ variant.available }},
+            option1: "{{ variant.option1 }}",
+            option2: "{{ variant.option2 }}",
+            option3: "{{ variant.option3 }}",
+            price: "{{ variant.price | money }}",
+            {% assign img_url = variant.image.src | img_url: '500x', scale: 2 %}
+            image: "{% unless img_url contains 'no-image' %}{{ img_url }}{% endunless %}"
+
+          },
+        {% endfor %} 
+      ],
+    }
+  },
+  methods: {
+    async handleAddToCart(id) {
+      console.log('Adding to cart');
+      this.error = '';
+      this.loading = true;
+      const quantity = 1;
+      try {
+        await store.dispatch('add_to_cart', {id, quantity});
+      } catch (e) {
+        this.error = e
+      }
+      this.loading = false
+    },
+    variant_from_options() {
+      const variant = this.variants.find((variant) => {
+        var match = true;
+        if(variant.option1 != '') {
+          match = variant.option1 == this.variant_selection.option1
+        }
+        if(match && variant.option2 != '') {
+          match = variant.option2 == this.variant_selection.option2
+        }
+        if(match && variant.opition3 != '') {
+          match = variant.option3 == this.variant_selection.option3
+        } 
+        return match;
+      });
+      this.current_variant_id = variant.id
+    },
+    dismissError() {
+      store.dispatch('dismiss_error');
+    }
+  },
+  computed: {
+    errorMessage() {
+      return store.state.error
+    },
+    current_variant() {
+      return this.variants.find(variant => variant.id == this.current_variant_id);
+    }
+  },
+}
+
+Product{{product.id}} = Vue.createApp(ProductCardOptions{{product.id}})
+Product{{product.id}}.mount('#product-card-{{product.id}}');
+Product{{product.id}}.use(store)
+</script>

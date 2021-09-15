@@ -1,3 +1,5 @@
+{% include 'store.js' %}
+
 {% if section.settings.message %}
   <style>
 
@@ -51,7 +53,7 @@
     {% endif %}
   {% endif %}
 
-  <header class="site-header{% if section.settings.align_logo == 'left' %} logo--left{% else %} logo--center{% endif %}" role="banner">
+  <header id="header" class="site-header{% if section.settings.align_logo == 'left' %} logo--left{% else %} logo--center{% endif %}" role="banner">
     <div class="page-width">
     <div class="grid grid--no-gutters grid--table site-header__mobile-nav">
       {% if section.settings.align_logo == 'center' %}
@@ -146,16 +148,17 @@
             <span class="icon__fallback-text">Wishlist</span>
           </a> {% endcomment %}
 
-          <a href="/cart" class="site-header__icon site-header__cart">
+          {% comment %} <a href="/cart" class="site-header__icon site-header__cart"> {% endcomment %}
+          <button @click="toggleCartVisibility"  aria-controls="drawer-name" aria-expanded="false" class="site-header__icon site-header__cart">
             {% render 'icon-cart' %}
             <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
             {% if cart.item_count > -1 %}
               <div id="CartCount" class="site-header__cart-count">
-                <span>{{ cart.item_count }}</span>
+                <span>${ cart.item_count }$</span>
                 <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
               </div>
             {% endif %}
-          </a>
+          </button>
 
           {% if shop.enabled_currencies.size > 1 %}
             {% form 'currency', class: "currency-selector small--hide" %}
@@ -292,6 +295,31 @@
 </div>
 
 
+<script>
+
+const HeaderOptions = {
+  name: 'Header',
+  delimiters: ["${", "}$"],
+  created() {
+    store.dispatch('get_cart');
+  },
+  methods: {
+    toggleCartVisibility() {
+      store.dispatch('toggle_cart_visibility')
+    }
+  },
+  computed: {
+    cart() {
+      return store.state.cart
+    }
+  }
+}
+
+const Header = Vue.createApp(HeaderOptions);
+Header.mount('#header');
+Header.use(store);
+
+</script>
 
 <script type="application/ld+json">
 {

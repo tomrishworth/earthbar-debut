@@ -40,11 +40,22 @@
     <meta name="description" content="{{ page_description | escape }}" />
     {%- endif -%} {% render 'social-meta-tags' %}
 
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{
+      'theme.css' | asset_url | stylesheet_tag
+    }}
+
+    {{
+      'shopify-money.js' | asset_url | script_tag
+    }}
+    <!-- {{ 'drawer.js' | asset_url | script_tag }} -->
 
     <link href="https://earthbar.s3-ap-southeast-2.amazonaws.com/earthbar-utilities.css" rel="stylesheet" />
-    <script src="https://unpkg.com/vue@3.1.5" ></script>
-   
+    {% comment %} <script src="https://unpkg.com/vue@3.1.5"></script> {% endcomment %}
+    <script src="https://unpkg.com/vue@3.1.5/dist/vue.global.prod.js"></script>
+    {% comment %} <script src="https://unpkg.com/vuex@4.0.1/dist/vuex.global.js"></script> {% endcomment %}
+    <script src="https://unpkg.com/vuex@4.0.1/dist/vuex.global.prod.js"></script>
+
+
     <script>
       var theme = {
         strings: {
@@ -93,19 +104,14 @@
     <!--<![endif]-->
     <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
 
-    
-  {{
+    {{
       content_for_header
     }}
     {% render 'judgeme_core' %}
-  
-</head>
+  </head>
 
-  <body class="template-{{ template | split: '.' | first }}">
-{% capture the_snippet_content %}{% render 'socialshopwave-helper' %}{% endcapture %}
-            {% unless the_snippet_content contains 'Liquid error' %}
-              {{ the_snippet_content }}
-            {% endunless %}
+  <body id="body" class="template-{{ template | split: '.' | first }}">
+    
     <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{
       'general.accessibility.skip_to_content' | t
     }}</a>
@@ -142,7 +148,6 @@
         </div>
       </div>
     </div>
-
     {% section 'header' %}
 
     <div class="page-container" id="PageContainer">
@@ -150,51 +155,46 @@
         {{ content_for_layout }}
       </main>
 
-      {% comment %} {% include 'judgeme_widgets', widget_type: 'judgeme_verified_reviews_count_badge', concierge_install: false %} {% endcomment %}
-      
-      {% section 'footer' %}
-
-      
-
+      {% comment %} {% include 'judgeme_widgets', widget_type: 'judgeme_verified_reviews_count_badge',
+      concierge_install: false %} {% endcomment %} {% section 'footer' %}
     </div>
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
     </ul>
 
-    {% render 'ajaxify-cart' %}
-   {% render 'smile-initializer' %}
+    {% comment %} {% render 'ajaxify-cart' %}  {% endcomment %}
+    {% render 'smile-initializer' %}
 
     {{ 'app.js' | asset_url | script_tag }}
 
-{% render 'icart-drawer' %}</body>
+    {% section 'drawer' %}
+  </body>
 </html>
-
 
 <!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.6) -->
 <script type="text/javascript">
-// Editable fields:
-var afterpay_min = 0.04;            // As per your Afterpay contract.
-var afterpay_max = 1000.00;         // As per your Afterpay contract.
-var afterpay_cbt_enabled = false;   // As per your Afterpay contract; change to true to display Cross-Border Trade artwork (for AU/NZ).
-var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
+  // Editable fields:
+  var afterpay_min = 0.04;            // As per your Afterpay contract.
+  var afterpay_max = 1000.00;         // As per your Afterpay contract.
+  var afterpay_cbt_enabled = false;   // As per your Afterpay contract; change to true to display Cross-Border Trade artwork (for AU/NZ).
+  var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
 
-// Overrides:
- var afterpay_product_selector = '.product__price';
-// var afterpay_cart_integration_enabled = true;
-// var afterpay_cart_static_selector = '#cart-subtotal-selector';
+  // Overrides:
+   var afterpay_product_selector = '.product__price';
+  // var afterpay_cart_integration_enabled = true;
+  // var afterpay_cart_static_selector = '#cart-subtotal-selector';
 
-// Non-editable fields:
-var afterpay_shop_currency = {{ shop.currency | json }};
-var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
-var afterpay_shop_money_format = {{ shop.money_format | json }};
-var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
-var afterpay_theme_name = {{ theme.name | json }};
-var afterpay_product = {{ product | json }};
-var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
-var afterpay_cart_total_price = {{ cart.total_price | json }};
-var afterpay_js_snippet_version = '1.0.6';
+  // Non-editable fields:
+  var afterpay_shop_currency = {{ shop.currency | json }};
+  var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
+  var afterpay_shop_money_format = {{ shop.money_format | json }};
+  var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+  var afterpay_theme_name = {{ theme.name | json }};
+  var afterpay_product = {{ product | json }};
+  var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+  var afterpay_cart_total_price = {{ cart.total_price | json }};
+  var afterpay_js_snippet_version = '1.0.6';
 </script>
 <script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
 <!-- End Shopify-Afterpay JavaScript Snippet (v1.0.6) -->
-

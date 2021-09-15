@@ -1,0 +1,115 @@
+<script>
+  const store = Vuex.createStore({
+    state() {
+      return {
+        cart: {
+          item: [],
+        },
+        cartVisible: false,
+        error: null,
+        recommendations: []
+      };
+    },
+    mutations: {
+      SET_CART(state, cart) {
+        cart.items.forEach((item) => {
+          item.formattedLinePrice = Shopify.formatMoney(item.line_price);
+        });
+        cart.formattedTotalPrice = Shopify.formatMoney(cart.total_price);
+        state.cart = cart;
+      },
+      SET_CART_VISIBILITY(state, payload) {
+        state.cartVisible = payload;
+      },
+      SET_ERROR(state, payload) {
+        state.error = payload;
+      },
+      SET_RECOMMENDATIONS(state, payload) {
+        state.recommendations = payload;
+      }
+    },
+    actions: {
+      get_cart({ commit, dispatch }) {
+        return fetch('/cart.js')
+          .then((res) => res.json())
+          .then((cart) => {
+            store.commit('SET_CART', cart);
+            dispatch('get_recommendations');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      get_recommendations({ commit, state }) {
+        let recommendations = [];
+        state.cart.items.forEach((item) => {
+          fetch(`/recommendations/products.json?product_id=${item.product_id}&limit=3`)
+            .then((response) => response.json())
+            .then((items) => {
+              items.products.forEach((itemx) => {
+                
+                itemx.formattedPrice = Shopify.formatMoney(itemx.price);
+                recommendations.push(itemx);
+              });
+              store.commit('SET_RECOMMENDATIONS', recommendations)
+            });
+        })
+      },
+      update_cart({ commit }, { id, qty }) {
+        const temp = id.toString();
+        const temp2 = parseInt(qty);
+        return fetch('/cart/change.js', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({ id: temp, quantity: temp2 }),
+        })
+          .then((res) => res.json())
+          .then((cart) => {
+            store.commit('SET_CART', cart);
+          });
+      },
+      add_to_cart({ commit, dispatch }, {id, quantity}) {
+        const temp = id.toString();
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({ id: temp, quantity: quantity }),
+        })
+          .then((res) => res.json())
+          .then((cart) => {
+            if(cart.status == 422) {
+              store.commit('SET_ERROR', cart.description)
+            } else {
+              dispatch('get_cart');
+              store.commit('SET_CART_VISIBILITY', true);
+            }
+         
+          })
+          .catch(error => {
+            console.log(error)
+            
+        });
+      },
+      toggle_cart_visibility({ commit, state }) {
+        if (state.cartVisible) {
+          store.commit('SET_CART_VISIBILITY', false);
+        } else {
+          store.commit('SET_CART_VISIBILITY', true);
+        }
+      },
+      close_cart({commit, state}) {
+        store.commit('SET_CART_VISIBILITY', false);
+      },
+      dismiss_error({commit}) {
+        store.commit('SET_ERROR', null)
+      }
+    },
+  });
+</script>

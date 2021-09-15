@@ -1,0 +1,253 @@
+{% comment %} {% include 'store.js' %} {% endcomment %}
+<div id="drawer-name">
+  <section class="cart-drawer" :class="cartDrawerClass">
+    {% comment %}
+    <div v-if="cartVisible" class="cart-drawer__overlay" data-drawer-close tabindex="-1"></div>
+    {% endcomment %}
+    <div class="cart-drawer__wrapper">
+      <div class="cart-drawer__header">
+        <div class="cart-drawer__title font-weight-semibold">Your Cart</div>
+        <button @click="closeDrawer" class="cart-drawer__close" aria-label="Close Drawer"></button>
+      </div>
+      <div class="cart-drawer__content">
+        <template v-if="cart">
+          <div  v-if="showCartItems">
+
+            <div class="cart-items-wrapper">
+              <div class="loading-spinner" v-if="loading">{% render 'loading-spinner' %}</div>
+              <div class="d-flex pb-2 mb-2 border-bottom" v-for="item in cart.items">
+                <div class="mr-3 flex-shrink-0" style="flex-basis: 100px">
+                  <img width="100" loading="lazy" :src="smallImage(item.image)" />
+                </div>
+                <div class="pr-3">
+                  <div class="cart-drawer__product-title"><a :href="item.url">${ item.product_title }$</a></div>
+                  <div class="text-sm">${maxCartQuantityMessage(item.quantity, item.id)}$</div>
+                  <div v-if="item.line_level_discount_allocations">
+                    <div class="mb-2" v-for="discount in item.line_level_discount_allocations">
+                      <p class="text-xs text-muted">Discount: ${discount.discount_application.title}$</p>
+                    </div>
+                  </div>
+                  <div class="mb-2" v-if="!item.product_has_only_default_variant">
+                    <div v-for="option in item.options_with_values">
+                      <div class="text-xs text-muted">${option.name}$: ${option.value}$</div>
+                    </div>
+                  </div>
+                  <div class="cart-stepper">
+                    <button :disabled="item.quantity == 1" @click="updateCart(item.variant_id, item.quantity - 1)">
+                      -
+                    </button>
+                    <span>${ item.quantity }$</span>
+                    <button @click="updateCart(item.variant_id, item.quantity + 1)">+</button>
+                  </div>
+                </div>
+                <div class="ml-auto text-right">
+                  <div v-if="item.line_level_discount_allocations.length">
+                    <div class="text-sm text-muted"><s>${ formatMoney(item.original_line_price) }$</s></div>
+                  </div>
+                  <div class="text-sm font-weight-semibold">${ item.formattedLinePrice }$</div>
+                  <div>
+                    <button class="btn-link text-muted" @click="removeFromCart(item.variant_id)">Remove</button>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex pt-3">
+                <div>Subtotal:</div>
+                <div class="ml-auto text-right font-weight-semibold">${cart.formattedTotalPrice }$</div>
+              </div>
+              <div class="text-center py-4">
+                <div v-html="freeShippingMessage"></div>
+            
+                <div v-if="orderWillShipFree" class="progress mt-2">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    :style="{width: freeShippingPercentage + '%'}"
+                    :aria-valuenow="freeShippingPercentage"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cart-recommendations">
+              <h3 class="text-sm">We think you will also like these</h3>
+              <ul class="cart-recommendations__row d-flex">
+                <template v-if="recommendedUniqueProducts.length">
+                  <li class="cart-recommendations__item" v-for="item in recommendedUniqueProducts">
+                    <a :href="item.url">
+                      <div><img width="120" loading="lazy" :src="smallImage(item.featured_image)" /><div>
+                      <div class="text-sm font-weight-semibold line-height-tight mb-1">${ item.title }$</div>
+                      <div class="text-xs font-weight-semibold">${ item.formattedPrice }$</div>
+                    </a>
+                  </li>
+                </template>
+              </ul>
+            </div>
+
+            <div class="cart-notes">
+              <button class="btn btn-link" @click="showNotes = !showNotes">
+                <span>Add a note to your order</span>
+                <span class="ml-1 cart-note-icon">{% include 'icon-chevron-down' %}</span>
+              </button>
+              <!-- <label for="CartSpecialInstructions" class="cart-note__label small--text-center">{{ 'cart.general.note' | t }}</label> -->
+              <div v-if="showNotes" class="mt-2">
+                <textarea ref="noteForm" placeholder="Enter your message" name="note" id="CartSpecialInstructions" class="cart-note__input">{{ cart.note }}</textarea>
+              </div>
+            </div>
+
+            
+            <!-- {% if additional_checkout_buttons %}
+            <div>
+              <p class="text-center text-xs">Or checkout with...</p>
+              <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+            </div>
+            {% endif %} -->
+          </div>
+          <div v-if="!showCartItems">
+            <p class="text-center pt-4">Your cart is currently empty</p>
+          </div>
+        </template>
+      </div>
+      <div class="cart-drawer__footer">
+        <div class="cart-actions d-flex border-top">
+          <div class="mr-1">
+            <button class="btn btn-block btn-outline" @click="closeDrawer">Continue Shopping</button>
+          </div>
+          <div class="ml-1 flex-grow-1">
+            <a class="btn btn-block btn-checkout" href="/checkout">Checkout Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <button @click="closeDrawer" v-if="cartVisible" class="close-cart-button"></button>
+</div>
+
+<script>
+  const CartDrawerOptions = {
+    store,
+    name: 'Cart Drawer',
+    delimiters: ['${', '}$'],
+    data() {
+      return {
+        loading: false,
+        loadingRecommendations: false,
+        showNotes: false,
+        cartItemMaxQuantities: null,
+        recommendedProducts: [],
+      };
+    },
+    methods: {
+      updateCart(id, qty) {
+        this.loading = true;
+        store.dispatch('update_cart', { id, qty }).then(() => {
+          this.loading = false;
+        });
+      },
+      removeFromCart(id) {
+        this.loading = true;
+        const qty = 0;
+        store.dispatch('update_cart', { id, qty }).then(() => (this.loading = false));
+      },
+      closeDrawer() {
+        store.dispatch('close_cart');
+      },
+      getQuantites() {
+        let url = '/pages/about-us?view=max-qtys';
+        fetch(url)
+          .then((res) => res.json())
+          .then((items) => {
+            this.cartItemMaxQuantities = items;
+          });
+      },
+      maxCartQuantityMessage(cartQuantity, itemId) {
+        if (this.cartItemMaxQuantities) {
+          inventoryQuantity = this.cartItemMaxQuantities[itemId];
+          if (cartQuantity >= inventoryQuantity) {
+            return 'All available items are in your cart';
+          }
+        }
+      },
+      cartItemInventory(id) {
+        if (this.cartItemMaxQuantities) {
+          return this.cartItemMaxQuantities[id];
+        }
+      },
+      formatMoney(val) {
+        return Shopify.formatMoney(val);
+      },
+      smallImage(url) {
+        let match = url.replace(/(\b(.jpg|.png)\b)/,"_200x200$1");
+        return match;
+      }
+    },
+    created() {
+      this.loading = true;
+      store.dispatch('get_cart').then(() => {
+        this.getQuantites();
+        // this.getRecommendations();
+        this.loading = false;
+      });
+    },
+    computed: {
+      cartVisible() {
+        return store.state.cartVisible;
+      },
+      showCartItems() {
+        if (this.cart.items && this.cart.items.length) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      cartDrawerClass() {
+        if (this.cartVisible) {
+          return 'is-visible';
+        }
+      },
+      cart() {
+        return store.state.cart;
+      },
+      recommendedUniqueProducts() {
+        let uniquieItems = store.state.recommendations.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
+        return uniquieItems.slice(0,3);
+      },
+      orderWillShipFree() {
+        if (this.cart.total_price < 5000) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      freeShippingMessage() {
+        let amountFromFreeShipping = 5000 - this.cart.total_price;
+        if (this.orderWillShipFree) {
+          return `You are <span class="font-weight-bold">${Shopify.formatMoney(
+            amountFromFreeShipping
+          )}</span> away from Free Shipping`;
+        } else {
+          return `<span class="font-weight-semibold">Your order will ship for free!</span>`;
+        }
+      },
+      freeShippingPercentage() {
+        return (this.cart.total_price / 5000) * 100;
+      }
+    },
+    watch: {
+      cartVisible(val) {
+        if (val == true) {
+          $('body').addClass('cart-open');
+        } else {
+          $('body').removeClass('cart-open');
+        }
+      },
+    },
+  };
+
+  const CartDrawer = Vue.createApp(CartDrawerOptions);
+  CartDrawer.mount('#drawer-name');
+  CartDrawer.use(store);
+</script>
+
+

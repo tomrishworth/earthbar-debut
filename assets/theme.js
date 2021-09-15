@@ -3245,38 +3245,38 @@ $(theme.init);
 
 // Quantity input steppers
 
-var NumberStepper = {
-  init: function () {
-    this.domElems();
-    this.events();
-  },
-  domElems: function () {
-    this.plusBtn = document.getElementById('plus');
-    this.minusBtn = document.getElementById('minus');
-    this.input = document.getElementById('Quantity-product-template');
-  },
-  events: function () {
-    this.minusBtn.addEventListener('click', this.decrement.bind(this));
-    this.plusBtn.addEventListener('click', this.increment.bind(this));
-  },
-  decrement: function () {
-    var value = this.input.value;
-    if (value > 1) {
-      value--;
-      this.input.value = value;
-    }
-  },
-  increment: function () {
-    var value = this.input.value;
-    value++;
-    this.input.value = value;
-  },
-};
+// var NumberStepper = {
+//   init: function () {
+//     this.domElems();
+//     this.events();
+//   },
+//   domElems: function () {
+//     this.plusBtn = document.getElementById('plus');
+//     this.minusBtn = document.getElementById('minus');
+//     this.input = document.getElementById('Quantity-product-template');
+//   },
+//   events: function () {
+//     this.minusBtn.addEventListener('click', this.decrement.bind(this));
+//     this.plusBtn.addEventListener('click', this.increment.bind(this));
+//   },
+//   decrement: function () {
+//     var value = this.input.value;
+//     if (value > 1) {
+//       value--;
+//       this.input.value = value;
+//     }
+//   },
+//   increment: function () {
+//     var value = this.input.value;
+//     value++;
+//     this.input.value = value;
+//   },
+// };
 
-if ($('body.template-product').length > 0) {
-  // window.addEventListener('scroll', onScroll);
-  NumberStepper.init();
-}
+// if ($('body.template-product').length > 0) {
+//   // window.addEventListener('scroll', onScroll);
+//   NumberStepper.init();
+// }
 
 var windowsize = $(window).width();
 
@@ -3286,3 +3286,7 @@ $(window).resize(function () {
     // window.addEventListener('scroll', onScroll);
   }
 });
+
+// $(document).ready(function () {
+//   $('.your-class').slick();
+// });
