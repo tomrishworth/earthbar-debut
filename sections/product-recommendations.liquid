@@ -12,7 +12,7 @@
           {% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge',
   jm_style: '', concierge_install: false %}
         </a>
-        <form method="post" action="/cart/add">
+        {% comment %} <form method="post" action="/cart/add">
           <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
           <div class="text-center">
             <button type="submit" class="btn btn--secondary btn-sm mb-2 d-none d-sm-inline-block">
@@ -20,7 +20,7 @@
             </button>
             <button type="submit" class="btn btn--secondary btn-sm mb-2 d-sm-none">Add to cart</button>
           </div>
-        </form>
+        </form> {% endcomment %}
       </li>
     {%- endfor -%}
     </ul>
