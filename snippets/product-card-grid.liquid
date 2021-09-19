@@ -89,6 +89,9 @@
       </button>
     </div>
   </div>
+  {% unless current.variant %}
+    <p class="text-center mt-1 mb-1">{{ product.metafields.my_fields.out_of_stock_message.value }}</p>
+  {% endunless %}
 </div>
 
 {% comment %} <form method="post" action="/cart/add">

@@ -153,6 +153,9 @@
                 {% render 'product-price', variant: current_variant %}
               </div>
             </div>
+            {% unless current.variant %}
+              <p class="mb-1">{{ product.metafields.my_fields.out_of_stock_message.value }}</p>
+            {% endunless %}
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
                 <div class="selector-wrapper js product-form__item">
@@ -214,6 +217,7 @@
               </div>
             </div>
           {% endform %}
+         
           <div class="cart-error d-flex justify-content-between" v-if="errorMessage" >
             <div class="mr-4">{% render 'icon-error' %}</div>
             <div>
