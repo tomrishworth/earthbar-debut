@@ -7997,3 +7997,36 @@ $spinner-border-width-sm: 0.2em;
   height: $spinner-height-sm;
   border-width: $spinner-border-width-sm;
 }
+
+// Swym overrides
+
+.swym-powered-by {
+  display: none;
+}
+
+.swym-button-bar {
+  margin-left: 0;
+}
+
+.swym-button-bar {
+  .swym-btn-container {
+    .swym-button {
+      font-weight: 600 !important;
+      min-height: 44px;
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+      border-radius: 2px !important;
+    }
+  }
+}
+
+.swym-remind-me * {
+  font-family: 'work sans' !important;
+}
+
+.swym-remind-me {
+  #swym-remind-email-auth-button {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+  }
+}
