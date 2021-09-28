@@ -6948,6 +6948,12 @@ $toolbar-height-small: 46px;
 
   &:hover,
   &:focus-within {
+    .primary-image {
+      opacity: 0;
+    }
+    .secondary-image {
+      opacity: 1;
+    }
     .product-card__image-wrapper {
       opacity: 0.8;
     }
@@ -6955,6 +6961,38 @@ $toolbar-height-small: 46px;
     .product-card__title {
       border-bottom-color: $color-text;
     }
+  }
+}
+
+.product-card__images {
+  .product-card__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-top: 113%;
+    width: 100%;
+    height: 0;
+    margin-bottom: 15px;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: unset !important;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform-origin: center;
+    }
+  }
+  .primary-image {
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1) 0s, transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+  }
+  .secondary-image {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1) 0s, transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
   }
 }
 
@@ -7253,6 +7291,7 @@ $toolbar-height-small: 46px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
   @include media-query($large-up) {
     right: 0;
   }
