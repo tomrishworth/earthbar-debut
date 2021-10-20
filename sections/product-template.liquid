@@ -247,7 +247,7 @@
         <div class="tabs" >
           <div class="tab-buttons">
             <button type="button" :class="{'active': activeTab === 'description' }" @click="activeTab = 'description'">Description</button>
-            <button v-if="ingredients.length" type="button" :class="{'active': activeTab === 'ingredients' }" @click="activeTab = 'ingredients'">Ingredients</button>
+            <button v-if="allIngredients" type="button" :class="{'active': activeTab === 'ingredients' }" @click="activeTab = 'ingredients'">Ingredients</button>
             {% if product.type == 'Soap' %}<button  type="button" :class="{'active': activeTab === 'notes' }" @click="activeTab = 'notes'">Notes</button>  {% endif %}
           </div>
           <div v-if="activeTab === 'description'" >
