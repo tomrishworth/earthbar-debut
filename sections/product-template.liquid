@@ -217,6 +217,9 @@
                   {{ form | payment_button }}
                 {% endif %}
               </div>
+              {% unless current_variant.available %}
+                <div class="ml-3"><a class="btn btn-primary klaviyo-bis-trigger" href="#">Notify Me When Available</a></div>
+              {% endunless %}
             </div>
           {% endform %}
          

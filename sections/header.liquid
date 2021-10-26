@@ -143,11 +143,6 @@
             {% endif %}
           {% endif %}
 
-          {% comment %} <a href="#swym-wishlist" class="site-header__icon swym-wishlist">
-            <svg class="icon-wishlist mt-2" role="presentation" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.5px;}</style></defs><title>Wishlist</title><path class="a" d="M12,21.844l-9.588-10A5.672,5.672,0,0,1,1.349,5.293h0a5.673,5.673,0,0,1,9.085-1.474L12,5.384l1.566-1.565a5.673,5.673,0,0,1,9.085,1.474h0a5.673,5.673,0,0,1-1.062,6.548Z"/></svg>
-            <span class="icon__fallback-text">Wishlist</span>
-          </a> {% endcomment %}
-
           {% comment %} <a href="/cart" class="site-header__icon site-header__cart"> {% endcomment %}
           <button @click="toggleCartVisibility"  aria-controls="drawer-name" aria-expanded="false" class="site-header__icon site-header__cart">
             {% render 'icon-cart' %}
