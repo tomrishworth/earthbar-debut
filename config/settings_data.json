@@ -32,9 +32,9 @@
     "social_youtube_link": "",
     "social_vimeo_link": "",
     "favicon": "shopify:\/\/shop_images\/favicon.png",
-    "checkout_header_image": "",
-    "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
-    "checkout_logo_position": "left",
+    "checkout_header_image": "shopify:\/\/shop_images\/Checkout_banner.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/2000x2000.png",
+    "checkout_logo_position": "center",
     "checkout_logo_size": "large",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#fff",
@@ -43,8 +43,8 @@
     "checkout_sidebar_background_color": "#fafafa",
     "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_accent_color": "#361a0f",
-    "checkout_button_color": "#361a0f",
+    "checkout_accent_color": "#bb581e",
+    "checkout_button_color": "#bb581e",
     "checkout_error_color": "#e32c2b",
     "sections": {
       "header": {
