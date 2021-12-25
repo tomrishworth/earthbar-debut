@@ -55,8 +55,6 @@
           "main_linklist": "main-menu",
           "message": true,
           "home_page_only": false,
-          "message_text": "COVID-19 UPDATE - Please note there are delays for deliveries at this time. Please allow an extra 3-5 days for deliveries. Kia Kaha",
-          "message_link": "",
           "color_bg": "#2e2522",
           "color_text": "#ffffff"
         }
@@ -280,6 +278,7 @@
       },
       "1561710528294": {
         "type": "custom-content",
+        "disabled": true,
         "blocks": {
           "1561710605006": {
             "type": "html",
@@ -328,6 +327,7 @@
       },
       "1562728294086": {
         "type": "custom-content",
+        "disabled": true,
         "blocks": {
           "1562728311549": {
             "type": "html",
@@ -485,9 +485,21 @@
         "type": "drawer",
         "settings": {
         }
+      },
+      "16404543962c090991": {
+        "type": "custom-hero",
+        "settings": {
+          "custom_hero_line1": "Natural Beauty Bars",
+          "custom_hero_line2": "that love you back",
+          "custom_hero_link_url": "",
+          "custom_hero_link_text": "",
+          "custom_hero_image1": "shopify:\/\/shop_images\/body-butter2.jpg",
+          "custom_hero_image2": "shopify:\/\/shop_images\/earthbar-hero.jpg"
+        }
       }
     },
     "content_for_index": [
+      "16404543962c090991",
       "1561710528294",
       "1562728294086",
       "1579114233532",
