@@ -60,7 +60,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>COVID-19 UPDATE - Please note there are significant delays for deliveries at this time. Please allow an extra 4-7 days for deliveries.<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           }
         },
