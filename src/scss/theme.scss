@@ -333,7 +333,10 @@ $grid-breakpoint-has-push: ($small, $medium-up);
 /*================ Color Variables ================*/
 
 $primary: #361a0f;
-$orange: #ed8246;
+// $orange: #ed8246;
+$orange: #bb581e;
+$orange-light: #ed8246;
+$brown: #76584e;
 
 // Text colors
 $color-text: $primary;
@@ -484,15 +487,22 @@ $transition-image-slideshow: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
   font-style: normal;
 }
 
+// @font-face {
+//   font-family: 'mix_palmerregular';
+//   src: url('mix_palmer-webfont.woff2') format('woff2'), url('mix_palmer-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
 @font-face {
-  font-family: 'mix_palmerregular';
-  src: url('mix_palmer-webfont.woff2') format('woff2'), url('mix_palmer-webfont.woff') format('woff');
+  font-family: 'sandblast';
+  src: url('sandblast.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 .font-cursive {
-  font-family: 'mix_palmerregular';
+  font-family: 'sandblast';
 }
 
 .font-heading {
@@ -1566,7 +1576,7 @@ html {
 
 .main-content {
   display: block;
-  padding-top: $section-spacing-small;
+  // padding-top: $section-spacing-small;
 
   // @include media-query($medium-up) {
   //   padding-top: $section-spacing;
@@ -2731,7 +2741,6 @@ textarea {
   padding: 0;
   text-align: center;
   margin: 0 0 25px 0;
-
   a {
     padding: 45px 15px 3px 15px;
   }
@@ -2757,7 +2766,7 @@ textarea {
     width: calc(8em / 16);
     height: calc(8em / 16);
     margin-left: 0.5rem;
-    fill: $teal;
+    fill: $orange;
   }
 
   &.site-nav--active-dropdown {
@@ -2799,25 +2808,25 @@ textarea {
 }
 
 .link-body {
-  background-image: url(https://earthbar.s3-ap-southeast-2.amazonaws.com/body-icon.svg);
+  background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635619900/Icons/body-icon_rpiind.svg);
   background-repeat: no-repeat;
   background-position: 50% 8px;
 }
 
 .link-hair {
-  background-image: url(https://earthbar.s3-ap-southeast-2.amazonaws.com/hair-icon.svg);
+  background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635619900/Icons/hair-icon_c8k89i.svg);
   background-repeat: no-repeat;
   background-position: 47% 5px;
 }
 
 .link-face {
-  background-image: url(https://earthbar.s3-ap-southeast-2.amazonaws.com/face-icon.svg);
+  background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635619900/Icons/face-icon_tokskr.svg);
   background-repeat: no-repeat;
   background-position: 49% 5px;
 }
 
 .link-gifts {
-  background-image: url(https://earthbar.s3-ap-southeast-2.amazonaws.com/gift-box-icon.svg);
+  background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635619900/Icons/gift-box-icon_ejcx2x.svg);
   background-repeat: no-repeat;
   background-position: 50% 7px;
 }
@@ -3726,14 +3735,14 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   white-space: normal;
   margin-top: 0;
   min-height: 44px;
-  background-color: $orange;
+  background-color: $orange-light;
   color: #3a1707;
   @include media-query($medium-up) {
     padding-left: 30px;
     padding-right: 30px;
   }
   &:hover {
-    background-color: darken($orange, 10%) !important;
+    background-color: darken($orange-light, 10%) !important;
     color: #3a1707 !important;
   }
 
@@ -4065,7 +4074,7 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   @include justify-content(center);
 
   .icon-chevron-down {
-    fill: $color-text-field-text;
+    fill: $orange;
     width: calc(10em / 16);
     height: calc(10em / 16);
     right: 1rem;
@@ -4399,6 +4408,7 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
 }
 
 /*================ MODULES ================*/
+
 .site-header {
   background-color: $color-body;
   position: relative;
@@ -4500,6 +4510,8 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
 
 .site-header__icons-wrapper {
   position: relative;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
   @include display-flexbox();
   @include align-items(center);
   @include justify-content(flex-end);
@@ -4575,6 +4587,7 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
     font-family: $font-stack-cart-notification;
     font-size: calc(11em / 16);
     line-height: 1;
+    color: #fff;
   }
 }
 
@@ -5245,7 +5258,7 @@ $nav-button-padding: 15px;
 .site-header__mobile-nav {
   z-index: 100;
   position: relative;
-  background-color: $color-body;
+  // background-color: $color-body;
 
   @include media-query($small) {
     @include display-flexbox();
@@ -7182,7 +7195,7 @@ $toolbar-height-small: 46px;
 }
 
 .jdgm-carousel-wrapper {
-  background-color: #ececec;
+  background-color: #ebf4f5;
 }
 
 .jdgm-carousel {
@@ -7428,6 +7441,24 @@ $toolbar-height-small: 46px;
   }
 }
 
+.feature-icons--lg {
+  .feature-icon {
+    width: 140px;
+  }
+  .feature-icon-text {
+    font-size: 16px;
+    @include media-query($medium-up) {
+      font-size: 18px;
+    }
+  }
+  .feature-icon-image {
+    img {
+      height: 60px;
+      width: 60px;
+    }
+  }
+}
+
 .features {
   display: flex;
   list-style: none !important;
@@ -7547,7 +7578,7 @@ $toolbar-height-small: 46px;
 
 .fake-link {
   text-decoration: underline;
-  color: $teal-dark;
+  color: $orange;
 }
 
 // Wishlist
@@ -7561,73 +7592,6 @@ $toolbar-height-small: 46px;
 // .icon-wishlist {
 //   stroke: #361a0f;
 // }
-
-// icart Overrides
-
-.icart {
-  .icart-header {
-    padding: 15px;
-    .icart-header-title {
-      text-align: left;
-    }
-  }
-  .icart-list {
-    .icart-item-content {
-      a {
-        text-decoration: underline;
-        .icart-item-title {
-          color: #333;
-          font-size: 13px !important;
-          font-weight: normal !important;
-        }
-      }
-      .icart-product-price {
-        font-weight: 600;
-      }
-    }
-    .icart-item-quantity {
-      .icartMinus,
-      .icartPlus {
-        border-radius: 0 !important;
-      }
-      .icart-qty-picker {
-        border-left: none !important;
-        border-right: none !important;
-      }
-      a.icart-item-remove {
-        font-weight: normal;
-        text-decoration: underline;
-      }
-    }
-  }
-  .icart-final-total {
-    .icart-cart-total label {
-      font-weight: 600 !important;
-    }
-    .icart-cart-price label {
-      font-weight: 600 !important;
-    }
-  }
-  .icart-checkout-btn {
-    display: flex;
-    .icartCheckoutBtn {
-      margin-top: 0 !important;
-      display: block;
-    }
-    .icartContinueShopping {
-      background-color: transparent;
-      margin-right: 5px !important;
-    }
-  }
-  .icart-product-upsell-block {
-    .icart-content-title {
-      padding-top: 20px !important;
-    }
-    .icart-product-upsell {
-      padding-bottom: 10px;
-    }
-  }
-}
 
 // Cart Drawer
 
@@ -7796,7 +7760,7 @@ body.cart-open {
     padding: 1rem 1.5rem 2rem 1.5rem;
   }
   .btn-checkout {
-    background-color: $orange;
+    background-color: $orange-light;
     color: $primary;
   }
 }
@@ -7975,7 +7939,7 @@ $progress-bg: #e9ecef;
 $progress-border-radius: $border-radius;
 $progress-box-shadow: inset 0 1px 2px rgba(#000, 0.075);
 $progress-bar-color: #fff;
-$progress-bar-bg: $orange;
+$progress-bar-bg: $orange-light;
 $progress-bar-animation-timing: 1s linear infinite;
 $progress-bar-transition: width 0.6s ease;
 
@@ -8035,4 +7999,121 @@ $spinner-border-width-sm: 0.2em;
   width: $spinner-width-sm;
   height: $spinner-height-sm;
   border-width: $spinner-border-width-sm;
+}
+
+.camomile-img {
+  background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533718/camomile_2x_pyspzi.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 200px;
+  height: 266px;
+  z-index: 20;
+  pointer-events: none;
+  @include media-query($medium-up) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 275px;
+    // height: 266px;
+  }
+}
+
+.clover-img {
+  @include media-query($large-up) {
+    background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533863/clover_2x_kffuof.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: 200px;
+    height: 362px;
+    z-index: 10;
+    pointer-events: none;
+  }
+}
+
+// Custom Slideshow
+
+.custom-slideshow {
+  height: 800px;
+}
+
+// Custom hero
+
+.custom-hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  @include media-query($small) {
+    display: block;
+  }
+}
+
+.custom-hero-left {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1639677419/brush-mark1_sqi4cz.png);
+    width: 898px;
+    height: 111px;
+    position: absolute;
+    bottom: -64px;
+    left: -10px;
+    right: 0;
+    z-index: 10;
+    @include media-query($small) {
+      background-image: unset;
+    }
+  }
+}
+
+.custom-hero-left-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  h2 {
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 0.8;
+  }
+  .line1 {
+    font-family: 'brandon-grotesque-bold';
+    font-weight: normal;
+    font-size: 30px;
+    color: #f5cfa2;
+    @include media-query($medium-up) {
+      font-size: 50px;
+    }
+  }
+  .line2 {
+    font-size: 40px;
+    font-weight: normal;
+    @include media-query($medium-up) {
+      font-size: 60px;
+    }
+  }
+}
+
+.custom-hero-right {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1639677657/brush-mark2_gpmjrs.png);
+    width: 982px;
+    height: 116px;
+    position: absolute;
+    bottom: -83px;
+    left: -127px;
+    right: 0;
+    z-index: 10;
+  }
 }

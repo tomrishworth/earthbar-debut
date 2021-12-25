@@ -3287,6 +3287,12 @@ $(window).resize(function () {
   }
 });
 
-// $(document).ready(function () {
-//   $('.your-class').slick();
-// });
+$(document).ready(function () {
+  $('.announcement-slider').slick({
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 8000,
+    vertical: true,
+    arrows: false,
+  });
+});

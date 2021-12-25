@@ -1,0 +1,79 @@
+<div class="custom-hero-section page-width">
+  <div class="custom-hero-left">
+    {{ section.settings.custom_hero_image1 | img_url: '600x600', scale: 2 | img_tag: section.settings.custom_hero_image1.alt, 'hero-image-left' }}
+    <div class="custom-hero-left-content">
+      <h2 class="line1">{{ section.settings.custom_hero_line1 }}</h2>
+      <h2 class="line2 font-cursive">{{ section.settings.custom_hero_line2 }}</h2>
+    </div>
+   </div>
+  <div class="custom-hero-right">
+    {{ section.settings.custom_hero_image2 | img_url: '600x600', scale: 2 | img_tag: section.settings.custom_hero_image2.alt, 'hero-image-right' }}
+  </div>
+</div>
+
+<div class="page-width">
+  <ul class="feature-icons feature-icons--lg row justify-content-center mt-5 mb-2">
+    <li class="feature-icon">
+      <div class="feature-icon-image"><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1639936037/Icons/palm-icon_yhgjxd.svg" alt="Palm Oil Free" /></div>
+      <h3 class="feature-icon-text">Palm Oil Free</h3>
+    </li>
+    <li class="feature-icon">
+      <div class="feature-icon-image"><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1639936154/Icons/vegan-icon_hu3qhs.svg" alt="Vegan" /></div>
+      <h3 class="feature-icon-text">Vegan</h3>
+    </li>
+    <li class="feature-icon">
+      <div class="feature-icon-image"><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1639936236/Icons/plastic-free-icon_jek8pa.svg" alt="Plastic Free Packaging" /></div>
+      <h3 class="feature-icon-text">Plastic Free Packaging</h3>
+    </li>
+    <li class="feature-icon">
+      <div class="feature-icon-image"><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1639936348/Icons/organic-icon_srahpy.svg" alt="Organic" /></div>
+      <h3 class="feature-icon-text">Organic</h3>
+    </li>
+  </ul> 
+</div>
+
+{% schema %}
+  {
+    "name": "Custom Hero",
+    "settings": [
+      {
+        "id": "custom_hero_line1",
+        "type": "text",
+        "label": "Heading line 1",
+        "default": "Line 1"
+      },
+      {
+        "id": "custom_hero_line2",
+        "type": "text",
+        "label": "Heading line 2",
+        "default": "Line 2"
+      },
+      {
+        "type": "url",
+        "id": "custom_hero_link_url",
+        "label": "Link url"
+      },
+      {
+        "type": "text",
+        "id": "custom_hero_link_text",
+        "label": "Link text"
+      },
+      {
+        "id": "custom_hero_image1",
+        "type": "image_picker",
+        "label": "Image Left"
+      },
+      {
+        "id": "custom_hero_image2",
+        "type": "image_picker",
+        "label": "Image Right"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom hero",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

@@ -17,5 +17,5 @@ gulp.task('giftCardCss', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('src/**/*.scss', gulp.series('css'));
+  gulp.watch('src/scss/theme.scss', gulp.series('css'));
 });
