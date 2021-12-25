@@ -48,6 +48,18 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "82a4d263-b43d-414e-af17-163e829e697d": {
+            "type": "text",
+            "settings": {
+              "announcement_text": "<p>Free NZ Shipping on orders over $50<\/p>",
+              "show_announcement": true
+            }
+          }
+        },
+        "block_order": [
+          "82a4d263-b43d-414e-af17-163e829e697d"
+        ],
         "settings": {
           "align_logo": "left",
           "logo": "shopify:\/\/shop_images\/logo.png",
