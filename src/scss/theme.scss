@@ -4419,9 +4419,24 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
     padding: 0;
   }
 
-  @include media-query($medium-up) {
-    &.logo--center {
-      padding-top: $grid-gutter;
+  @include media-query($medium) {
+    .page-width {
+      padding: 0;
+    }
+    .site-header__logo {
+      padding-left: 0;
+    }
+    .logo-align--left,
+    .site-header__icons {
+      width: 20%;
+    }
+    nav {
+      width: 60%;
+    }
+  }
+  @include media-query($large) {
+    .site-header__logo {
+      padding-left: 0;
     }
   }
 }
@@ -8022,7 +8037,7 @@ $spinner-border-width-sm: 0.2em;
 }
 
 .clover-img {
-  @include media-query($large-up) {
+  @include media-query($widescreen) {
     background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533863/clover_2x_kffuof.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -8087,7 +8102,7 @@ $spinner-border-width-sm: 0.2em;
   .line1 {
     font-family: 'brandon-grotesque-bold';
     font-weight: normal;
-    font-size: 30px;
+    font-size: 32px;
     color: #f5cfa2;
     @include media-query($medium-up) {
       font-size: 50px;
