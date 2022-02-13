@@ -53,7 +53,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Free NZ Shipping on orders over $50<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -62,11 +62,19 @@
               "announcement_text": "<p>COVID-19 UPDATE - Please note there are significant delays for deliveries at this time. Please allow an extra 4-7 days for deliveries.<\/p>",
               "show_announcement": false
             }
+          },
+          "82a50127-998b-4813-a44f-b8fff9bba901": {
+            "type": "text",
+            "settings": {
+              "announcement_text": "<p>Please Note - We are away on holiday. All orders received this week will be promptly dispatched on the 28 Feb. Thanks!<\/p>",
+              "show_announcement": true
+            }
           }
         },
         "block_order": [
           "82a4d263-b43d-414e-af17-163e829e697d",
-          "43c6065b-20d4-44b7-a48f-1b3866deefdd"
+          "43c6065b-20d4-44b7-a48f-1b3866deefdd",
+          "82a50127-998b-4813-a44f-b8fff9bba901"
         ],
         "settings": {
           "align_logo": "left",
