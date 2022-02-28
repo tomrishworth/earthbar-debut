@@ -8017,10 +8017,7 @@ $spinner-border-width-sm: 0.2em;
 }
 
 .camomile-img {
-  background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533718/camomile_2x_pyspzi.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
+
   top: 40px;
   left: 0;
   width: 200px;
@@ -8028,7 +8025,10 @@ $spinner-border-width-sm: 0.2em;
   z-index: 20;
   pointer-events: none;
   @include media-query($medium-up) {
-    position: fixed;
+    background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533718/camomile_2x_pyspzi.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
     left: 0;
     top: 0;
     width: 275px;
@@ -8041,7 +8041,7 @@ $spinner-border-width-sm: 0.2em;
     background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533863/clover_2x_kffuof.png);
     background-repeat: no-repeat;
     background-size: contain;
-    position: fixed;
+    position: absolute;
     top: 50px;
     right: 0;
     width: 200px;
