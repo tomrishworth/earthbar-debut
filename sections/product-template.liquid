@@ -16,6 +16,8 @@
   {%- assign enable_zoom = section.settings.enable_zoom -%}
   {%- assign compare_at_price = current_variant.compare_at_price -%}
   {%- assign price = current_variant.price -%}
+  {%- assign today_date = 'now' | date: '%s' %}
+  {%- assign bis_date = product.metafields.my_fields.back_in_stock_date.value | date: '%s' %}
 
   {% case section.settings.image_size %}
     {% when 'small' %}
@@ -125,9 +127,9 @@
 
           {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
             <div class="product__policies rte">
-              {%- if shop.taxes_included -%}
+              {% comment %} {%- if shop.taxes_included -%}
                 {{ 'products.product.include_taxes' | t }}
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
               {%- if shop.shipping_policy.body != blank -%}
                 {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
               {%- endif -%}
@@ -154,8 +156,11 @@
               </div>
             </div>
             {% unless current_variant.available %}
-              <p class="mb-1">{{ product.metafields.my_fields.out_of_stock_message.value }}</p>
+              {% if product.metafields.my_fields.back_in_stock_date and today_date < bis_date %}
+                <p class="mb-1">Back in stock: <strong>{{ product.metafields.my_fields.back_in_stock_date.value | date: "%d %b, %Y" }}</strong></p>
+              {% endif %}
             {% endunless %}
+           
             {% unless product.has_only_default_variant %}
               {% for option in product.options_with_values %}
                 <div class="selector-wrapper js product-form__item">
