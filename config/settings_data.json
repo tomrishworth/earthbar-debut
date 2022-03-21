@@ -73,7 +73,7 @@
           "3ff75694-3584-44eb-9f66-94a8d848fb9a": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Due to COVID-1, we are unable to send orders this week. All orders will be shipped next week on the 28th March. Thank you.<\/p>",
+              "announcement_text": "<p>Due to COVID-19, we are unable to send orders this week. All orders will be shipped next week on the 28th March. Thank you.<\/p>",
               "show_announcement": true
             }
           }
