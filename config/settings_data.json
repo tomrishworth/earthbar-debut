@@ -53,7 +53,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Free NZ Shipping on orders over $50<\/p>",
-              "show_announcement": false
+              "show_announcement": true
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -74,7 +74,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Due to COVID-19, we are unable to send orders this week. All orders will be shipped next week on the 28th March. Thank you.<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           }
         },
