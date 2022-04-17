@@ -66,7 +66,7 @@
           "82a50127-998b-4813-a44f-b8fff9bba901": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Please Note - We are away on holiday this week. All orders received this week will be promptly dispatched on the 26 April. Thanks!<\/p>",
+              "announcement_text": "<p>Please Note - We are away on holiday, and all orders received this week will be promptly dispatched on the 26 April. Thanks!<\/p>",
               "show_announcement": true
             }
           },
