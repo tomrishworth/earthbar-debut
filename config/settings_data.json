@@ -53,7 +53,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Free NZ Shipping on orders over $50<\/p>",
-              "show_announcement": false
+              "show_announcement": true
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -67,7 +67,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Please Note - We are away on holiday, and all orders received this week will be promptly dispatched on the 26 April. Thanks!<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           },
           "3ff75694-3584-44eb-9f66-94a8d848fb9a": {
