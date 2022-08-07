@@ -385,7 +385,7 @@
         "settings": {
           "title": "Latest Products",
           "collection": "latest-products",
-          "grid": 2,
+          "grid": 4,
           "rows": 1,
           "show_vendor": false,
           "show_view_all": false,
