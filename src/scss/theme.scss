@@ -8016,40 +8016,40 @@ $spinner-border-width-sm: 0.2em;
   border-width: $spinner-border-width-sm;
 }
 
-.camomile-img {
+// .camomile-img {
 
-  top: 40px;
-  left: 0;
-  width: 200px;
-  height: 266px;
-  z-index: 20;
-  pointer-events: none;
-  @include media-query($medium-up) {
-    background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533718/camomile_2x_pyspzi.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 275px;
-    // height: 266px;
-  }
-}
+//   top: 40px;
+//   left: 0;
+//   width: 200px;
+//   height: 266px;
+//   z-index: 20;
+//   pointer-events: none;
+//   @include media-query($medium-up) {
+//     background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533718/camomile_2x_pyspzi.png);
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 275px;
+//     // height: 266px;
+//   }
+// }
 
-.clover-img {
-  @include media-query($widescreen) {
-    background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533863/clover_2x_kffuof.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    width: 200px;
-    height: 362px;
-    z-index: 10;
-    pointer-events: none;
-  }
-}
+// .clover-img {
+//   @include media-query($widescreen) {
+//     background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1635533863/clover_2x_kffuof.png);
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     position: absolute;
+//     top: 50px;
+//     right: 0;
+//     width: 200px;
+//     height: 362px;
+//     z-index: 10;
+//     pointer-events: none;
+//   }
+// }
 
 // Custom Slideshow
 
