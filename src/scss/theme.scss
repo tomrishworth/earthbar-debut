@@ -2114,6 +2114,11 @@ a[href^='tel'] {
   color: $color-btn-primary;
 }
 
+.btn--primary {
+  background-color: $orange;
+  color: #fff;
+}
+
 .btn--secondary {
   background-color: transparent;
   color: $color-btn-primary;
@@ -8131,4 +8136,56 @@ $spinner-border-width-sm: 0.2em;
     right: 0;
     z-index: 10;
   }
+}
+
+#Collection {
+  scroll-behavior: smooth;
+}
+
+.deodorant-collection-hero {
+  @include media-query($medium-up) {
+    padding-bottom: 50px;
+  }
+}
+
+.deodorant-feature-icons {
+  .deodorant-image {
+    text-align: center;
+  }
+  h3 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+}
+
+.deodorant-collection-hero__title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  @include media-query($medium-up) {
+    padding-right: 30px;
+  }
+}
+
+.featured-reviews {
+  padding: 40px;
+  margin-bottom: 40px;
+  background-image: url(https://res.cloudinary.com/earthbar/image/upload/q_auto:eco/v1677282061/wood-texture-bg_bjbofe.jpg);
+  h3 {
+    &:before {
+      content: '';
+      background-image: url(https://res.cloudinary.com/earthbar/image/upload/v1677283319/quote-mark_wyt7px.svg);
+      width: 45px;
+      height: 35px;
+      display: block;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+    }
+  }
+}
+
+.review p {
+  color: #363432;
 }

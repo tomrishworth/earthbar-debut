@@ -19,7 +19,6 @@
 
 <div data-section-id="{{ section.id }}" data-section-type="collection-template">
   <header class="collection-header">
-    <p>Here</p>
     {%- assign is_filter_by_available = false -%}
     {%- if section.settings.tags_enable and collection.all_tags.size > 0 -%}
       {%- assign is_filter_by_available = true -%}
@@ -30,56 +29,108 @@
       {%- assign is_vendor_or_type_collection = true -%}
     {%- endif -%}
 
-    {% if section.settings.show_collection_image and collection.image %}
-      <div class="collection-hero">
-        <div class="collection-hero__image ratio-container lazyload js"
-             data-bgset="{% include 'bgset', image: collection.image %}"
-             data-sizes="auto"
-             data-parent-fit="cover"
-             style="background-image: url('{{ collection.image | img_url: '300x300' }});"></div>
-        <noscript>
-          <div class="collection-hero__image" style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});"></div>
-        </noscript>
-        <div class="collection-hero__title-wrapper">
-          <h1 class="collection-hero__title page-width">
-            <span role="text">
-              <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
-              {{ collection.title }}
-            </span>
-          </h1>
+
+      <div class="page-width">
+        <div class="deodorant-collection-hero row">
+          <div class="col-sm-6">
+            <div class="deodorant-collection-hero__title-wrapper mt-3 mt-sm-0 mb-5 mb-sm-0">
+              <h1 class="deodorant-collection-hero__title ">
+                <span role="text">
+                  <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
+                  {{ collection.title }}
+                </span>
+              </h1>
+              {% if collection.description != blank %}
+                <div class="rte collection-description">
+                  {{ collection.description }}
+                </div>
+              {% endif %}
+              <p><strong>Available in 3 fragrances</strong></p>
+              <div><a class="btn btn--primary" href="#Collection">Shop Now</a></div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="deodorant-collection-hero__image">
+              <img loading="lazy" src="{{ collection.image | img_url: '450x450', scale: 2 }}" > 
+            </div>
+          </div>
+
+  
+       
+      </div>
+
+      <ul class="deodorant-feature-icons row mt-5 mb-2 pb-sm-5 mb-sm-5">
+        <li class="col-sm-3 deodorant-feature-icon mb-3 mb-sm-0">
+          <div class="deodorant-image"><img loading="lazy"
+              src="https://www.datocms-assets.com/49186/1677265651-gentle-on-your-skin.svg" alt="Gentle on your skin"></div>
+          <h3>Gentle on your skin</h3>
+          <p class="text-sm">Aluminium-based deodorants can be harsh on the skin, causing rashes, itching, and dryness. Our aluminium-free deodorants are made with gentler ingredients and are suitable for those with sensitive skin.</p>
+        </li>
+        <li class="col-sm-3 deodorant-feature-icon mb-3 mb-sm-0">
+          <div class="deodorant-image"><img loading="lazy"
+              src="https://www.datocms-assets.com/49186/1677265648-improved-fragrance.svg" alt="Improved fragrance"></div>
+          <h3>Improved fragrance</h3>
+          <p class="text-sm">Our aluminium-free deodorants contain natural fragrances, such as essential oils, that provide a fresh and pleasant scent. These fragrances are milder and more subtle than the fragrances found in conventional deodorants.</p>
+        </li>
+        <li class="col-sm-3 deodorant-feature-icon mb-3 mb-sm-0">
+          <div class="deodorant-image"><img loading="lazy"
+              src="https://www.datocms-assets.com/49186/1677265645-no-white-marks.svg" alt="No white marks"></div>
+          <h3>No white marks</h3>
+          <p class="text-sm">Aluminium-based deodorants can leave white marks on clothing, making them unsightly and embarrassing. Our aluminium-free deodorants go on clear, reducing the risk of white marks on clothing.</p>
+        </li>
+        <li class="col-sm-3 deodorant-feature-icon mb-3 mb-sm-0">
+          <div class="deodorant-image"><img loading="lazy"
+              src="https://www.datocms-assets.com/49186/1677265641-better-for-the-planet.svg" alt="Better for the planet"></div>
+          <h3>Better for the planet</h3>
+          <p class="text-sm">Most conventional deodorants contain microplastics, which can harm the environment when they reach the oceans. Our deodorants are made with all-natural ingredients, and minimal packaging, reducing the impact on the environment.</p>
+        </li>
+      </ul>
+
+      <div class="featured-reviews">
+        <h2 class="text-center pb-5 mb-5">Over 30+ 5 star reviews</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="review mb-5 mb-sm-0">
+              <h3>Love it!</h3>
+              <div><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1677282925/five-stars_kkxqrd.svg" /></div>
+              <p>Loved it so much I purchased another one. It spreads easily upon application, smells beautiful, lasts a long
+                time unless I go for a big run (which I would put on again afterwards) and is literally little to no waste!
+              </p>
+              <p><strong>~ J</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+
+            <div class="review mb-5 mb-sm-0">
+              <h3>World class!</h3>
+              <div><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1677282925/five-stars_kkxqrd.svg" /></div>
+              <p>I have been using this deodorant for years. It is the best product I have ever used even before you consider
+                the ethical nature of is manufacturing. Love the cardboard, love the NZ natural ingredients, love the not-Lynx
+                aroma.</p>
+              <p><strong>~ Simon B</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+
+            <div class="review mb-5 mb-sm-0">
+              <h3>My new favourite deodorant</h3>
+              <div><img loading="lazy" src="https://res.cloudinary.com/earthbar/image/upload/v1677282925/five-stars_kkxqrd.svg" /></div>
+              <p>I’m trying to move away from chemicals and plastic packaging so have tried a few block deodorants and this
+                one is by far the best. This is my new deodorant from now on.</p>
+              <p><strong>~ Natalia</strong></p>
+            </div>
+      
+          </div>
         </div>
       </div>
+
       {% if is_filter_by_available == false and section.settings.sort_enable == false %}
         <div class="page-width">
           <span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
         </div>
       {% endif %}
-      {% if collection.description != blank %}
-        <div class="rte collection-description page-width">
-          {{ collection.description }}
-        </div>
-      {% endif %}
-    {% else %}
-      <div class="page-width">
-        <div class="section-header text-center">
-          <h1>
-            <span role="text">
-              <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
-              {{ collection.title }}
-            </span>
-          </h1>
-          {% if collection.description != blank %}
-            <div class="rte collection-description">
-              {{ collection.description }}
-            </div>
-          {% endif %}
-          {% if is_filter_by_available == false and section.settings.sort_enable == false %}
-            {% comment %} <span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span> {% endcomment %}
-          {% endif %}
-        </div>
-      </div>
-    {% endif %}
-
+      
+  
     {% if is_filter_by_available or section.settings.sort_enable %}
       <div class="filters-toolbar-wrapper{% if is_filter_by_available %} filters-toolbar--has-filter{% endif %}">
         <div class="page-width">
@@ -145,7 +196,7 @@
 
   <div class="page-width" id="Collection">
     {% if section.settings.layout == 'grid' %}
-      {% case section.settings.grid %}
+      {% comment %} {% case section.settings.grid %}
       {% when 2 %}
         {%- assign grid_item_width = 'medium-up--one-half' -%}
       {% when 3 %}
@@ -154,7 +205,10 @@
         {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
       {% when 5 %}
         {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
-      {% endcase %}
+      {% endcase %} {% endcomment %}
+
+      {%- assign grid_item_width = 'medium-up--one-third' -%}
+
 
       <ul class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
         {% for product in collection.products %}
