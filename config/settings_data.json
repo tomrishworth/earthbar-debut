@@ -52,8 +52,8 @@
           "82a4d263-b43d-414e-af17-163e829e697d": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Free NZ Shipping on orders over $50<\/p>",
-              "show_announcement": false
+              "announcement_text": "<p>Free NZ Shipping on orders over $60<\/p>",
+              "show_announcement": true
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -81,7 +81,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>PLEASE NOTE: We are currently moving premises, and all orders recieved will be dispatched on 20 March. Thank you<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           }
         },
