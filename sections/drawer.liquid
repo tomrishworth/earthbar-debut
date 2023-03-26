@@ -214,7 +214,7 @@
         return uniquieItems.slice(0,3);
       },
       orderWillShipFree() {
-        if (this.cart.total_price < 5000) {
+        if (this.cart.total_price < 6000) {
           return true;
         } else {
           return false;
@@ -225,13 +225,13 @@
         if (this.orderWillShipFree) {
           return `You are <span class="font-weight-bold">${Shopify.formatMoney(
             amountFromFreeShipping
-          )}</span> away from Free Shipping`;
+          )}</span> away from Free Shipping <small>Excludes Rural delivery</small>`;
         } else {
-          return `<span class="font-weight-semibold">Your order will ship for free!</span>`;
+          return `<span class="font-weight-semibold">Your order will ship for free! <small>Excludes Rural delivery</small></span>`;
         }
       },
       freeShippingPercentage() {
-        return (this.cart.total_price / 5000) * 100;
+        return (this.cart.total_price / 6000) * 100;
       }
     },
     watch: {
