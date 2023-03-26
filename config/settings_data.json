@@ -52,7 +52,7 @@
           "82a4d263-b43d-414e-af17-163e829e697d": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Free NZ Shipping on orders over $60<\/p>",
+              "announcement_text": "<p>Free NZ Shipping on orders over $60* (Excluding Rural Delivery)<\/p>",
               "show_announcement": true
             }
           },
