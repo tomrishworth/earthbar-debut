@@ -221,7 +221,7 @@
         }
       },
       freeShippingMessage() {
-        let amountFromFreeShipping = 5000 - this.cart.total_price;
+        let amountFromFreeShipping = 6000 - this.cart.total_price;
         if (this.orderWillShipFree) {
           return `You are <span class="font-weight-bold">${Shopify.formatMoney(
             amountFromFreeShipping
