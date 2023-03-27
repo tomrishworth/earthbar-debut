@@ -225,9 +225,9 @@
         if (this.orderWillShipFree) {
           return `You are <span class="font-weight-bold">${Shopify.formatMoney(
             amountFromFreeShipping
-          )}</span> away from Free Shipping <small>Excludes Rural delivery</small>`;
+          )}</span> away from Free Shipping* <div><small class="text-muted">*Excludes Rural delivery</small></div>`;
         } else {
-          return `<span class="font-weight-semibold">Your order will ship for free! <small>Excludes Rural delivery</small></span>`;
+          return `<span class="font-weight-semibold">Your order will ship for free! </span><div><small class="text-muted">Excludes Rural delivery</small></div>`;
         }
       },
       freeShippingPercentage() {
