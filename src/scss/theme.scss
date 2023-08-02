@@ -448,44 +448,44 @@ $transition-image-slideshow: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 
 /*================ Typography ================*/
 
-@font-face {
-  font-family: 'brandon-grotesque-bold';
-  src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.eot?v=347905445709810314');
-  src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.eot?v=347905445709810314 ?#iefix')
-      format('embedded-opentype'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.woff?v=4681408821145873076') format('woff'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.ttf?v=10929587635815814017')
-      format('truetype'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.svg?v=1788178671997345413') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'brandon-grotesque-bold';
+//   src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.eot?v=347905445709810314');
+//   src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.eot?v=347905445709810314 ?#iefix')
+//       format('embedded-opentype'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.woff?v=4681408821145873076') format('woff'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.ttf?v=10929587635815814017')
+//       format('truetype'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_bld.svg?v=1788178671997345413') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: 'brandon-grotesque-medium';
-  src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.eot?v=1670852000973458961');
-  src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.eot?v=1670852000973458961 ?#iefix')
-      format('embedded-opentype'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.woff?v=17269320686389768056') format('woff'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.ttf?v=14708125167555034025')
-      format('truetype'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.svg?v=3206574566785762516') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'brandon-grotesque-medium';
+//   src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.eot?v=1670852000973458961');
+//   src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.eot?v=1670852000973458961 ?#iefix')
+//       format('embedded-opentype'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.woff?v=17269320686389768056') format('woff'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.ttf?v=14708125167555034025')
+//       format('truetype'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_med.svg?v=3206574566785762516') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: 'brandon-grotesque-regular';
-  src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.eot?v=11553233337116711293');
-  src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.eot?v=11553233337116711293 ?#iefix')
-      format('embedded-opentype'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.woff?v=17320850619365412064') format('woff'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.ttf?v=17301807330012987555')
-      format('truetype'),
-    url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.svg?v=13434501991402005225') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'brandon-grotesque-regular';
+//   src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.eot?v=11553233337116711293');
+//   src: url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.eot?v=11553233337116711293 ?#iefix')
+//       format('embedded-opentype'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.woff?v=17320850619365412064') format('woff'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.ttf?v=17301807330012987555')
+//       format('truetype'),
+//     url('//cdn.shopify.com/s/files/1/0049/9990/5350/t/13/assets/brandon_reg.svg?v=13434501991402005225') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 // @font-face {
 //   font-family: 'mix_palmerregular';
@@ -503,10 +503,6 @@ $transition-image-slideshow: opacity 0.8s cubic-bezier(0.44, 0.13, 0.48, 0.87);
 
 .font-cursive {
   font-family: 'sandblast';
-}
-
-.font-heading {
-  font-family: 'brandon-grotesque-medium';
 }
 
 // Layout helpers
@@ -554,11 +550,18 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Work+Sans:wght@400;500;600;700&display=swap');
 
 $font-weight-body--bold: 700;
 $font-weight-body--bolder: 700;
 $font-weight-header--bold: 700;
+
+
+.font-heading {
+  font-family: 'Cabin', sans-serif;
+}
+
 
 $font-stack-header: 'Work Sans', sans-serif;
 $font-style-header: normal;
@@ -7165,7 +7168,7 @@ $toolbar-height-small: 46px;
       font-size: 13px;
       font-weight: 500;
       line-height: 1.2;
-      font-family: 'brandon-grotesque-medium';
+      font-family: 'Cabin', sans-serif;
       @include media-query($medium-up) {
         width: 20%;
       }
@@ -8105,8 +8108,8 @@ $spinner-border-width-sm: 0.2em;
     line-height: 0.8;
   }
   .line1 {
-    font-family: 'brandon-grotesque-bold';
-    font-weight: normal;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 500;
     font-size: 32px;
     color: #f5cfa2;
     @include media-query($medium-up) {
