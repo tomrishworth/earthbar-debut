@@ -53,7 +53,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Free NZ Shipping on orders over $60* (Excluding Rural Delivery)<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -66,8 +66,8 @@
           "82a50127-998b-4813-a44f-b8fff9bba901": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Please Note - We are away on holiday, and all orders received this week will be promptly dispatched on the 13 January. Thanks!<\/p>",
-              "show_announcement": false
+              "announcement_text": "<p>Please Note - We are away on holiday, and all orders received this week will be promptly dispatched on the 26 February. Thanks!<\/p>",
+              "show_announcement": true
             }
           },
           "3ff75694-3584-44eb-9f66-94a8d848fb9a": {
@@ -105,7 +105,6 @@
       },
       "slideshow": {
         "type": "slideshow",
-        "disabled": true,
         "blocks": {
           "slideshow-0": {
             "type": "image",
@@ -130,6 +129,7 @@
           "slideshow-0",
           "slideshow-1"
         ],
+        "disabled": true,
         "settings": {
           "autoplay": true,
           "autoplay_speed": 7,
@@ -295,7 +295,6 @@
       },
       "1557293034592": {
         "type": "quotes",
-        "disabled": true,
         "blocks": {
           "1557293034592-0": {
             "type": "quote",
@@ -316,13 +315,13 @@
           "1557293034592-0",
           "1557299153834"
         ],
+        "disabled": true,
         "settings": {
           "title": "What our customers are saying"
         }
       },
       "1561710528294": {
         "type": "custom-content",
-        "disabled": true,
         "blocks": {
           "1561710605006": {
             "type": "html",
@@ -335,6 +334,7 @@
         "block_order": [
           "1561710605006"
         ],
+        "disabled": true,
         "settings": {
           "title": ""
         }
@@ -371,7 +371,6 @@
       },
       "1562728294086": {
         "type": "custom-content",
-        "disabled": true,
         "blocks": {
           "1562728311549": {
             "type": "html",
@@ -384,6 +383,7 @@
         "block_order": [
           "1562728311549"
         ],
+        "disabled": true,
         "settings": {
           "title": ""
         }
