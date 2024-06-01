@@ -53,7 +53,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Free NZ Shipping on orders over $60* (Excluding Rural Delivery)<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -66,7 +66,7 @@
           "82a50127-998b-4813-a44f-b8fff9bba901": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Please Note - We are away on holiday, and all orders received this week will be promptly dispatched on the 26 February. Thanks!<\/p>",
+              "announcement_text": "<p>Please Note - We are away on holiday from June 4 - 25. Any order will be shipped . Thanks!<\/p>",
               "show_announcement": false
             }
           },
@@ -80,8 +80,8 @@
           "ccdf2446-b3ee-4cae-a73f-39d44d3f0f47": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>PLEASE NOTE: We are currently moving premises, and all orders recieved will be dispatched on 20 March. Thank you<\/p>",
-              "show_announcement": false
+              "announcement_text": "<p>Just a heads-up: we'll be on holiday from June 4 to June 25, so any orders or support requests will be handled once we're back on June 26. Thanks for your understanding<\/p>",
+              "show_announcement": true
             }
           }
         },
