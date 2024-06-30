@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "current": {
     "color_text": "#361a0f",
@@ -53,7 +62,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Free NZ Shipping on orders over $60* (Excluding Rural Delivery)<\/p>",
-              "show_announcement": false
+              "show_announcement": true
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
@@ -81,7 +90,7 @@
             "type": "text",
             "settings": {
               "announcement_text": "<p>Just a heads-up: we'll be on holiday from June 4 to June 25, so any orders or support requests will be handled once we're back on June 26. Thanks for your understanding<\/p>",
-              "show_announcement": true
+              "show_announcement": false
             }
           }
         },
