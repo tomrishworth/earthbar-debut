@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_text": "#361a0f",
@@ -28,20 +28,20 @@
     "type_base_font": "work_sans_n4",
     "type_base_size": 16,
     "type_bold_product_titles": false,
-    "share_image": "shopify:\/\/shop_images\/earthbar-shampoo-shower.png",
+    "share_image": "shopify://shop_images/earthbar-shampoo-shower.png",
     "share_facebook": true,
     "share_twitter": true,
     "share_pinterest": true,
     "social_twitter_link": "",
-    "social_facebook_link": "https:\/\/www.facebook.com\/earthbarnz",
+    "social_facebook_link": "https://www.facebook.com/earthbarnz",
     "social_pinterest_link": "",
-    "social_instagram_link": "https:\/\/www.instagram.com\/earthbarnz\/",
+    "social_instagram_link": "https://www.instagram.com/earthbarnz/",
     "social_tumblr_link": "",
     "social_snapchat_link": "",
     "social_youtube_link": "",
     "social_vimeo_link": "",
-    "favicon": "shopify:\/\/shop_images\/favicon.png",
-    "checkout_logo_image": "shopify:\/\/shop_images\/2000x2000.png",
+    "favicon": "shopify://shop_images/favicon.png",
+    "checkout_logo_image": "shopify://shop_images/2000x2000.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "large",
     "checkout_body_background_image": "",
@@ -61,35 +61,35 @@
           "82a4d263-b43d-414e-af17-163e829e697d": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Free NZ Shipping on orders over $60* (Excluding Rural Delivery)<\/p>",
+              "announcement_text": "<p>Free NZ Shipping on orders over $60* (Excluding Rural Delivery)</p>",
               "show_announcement": true
             }
           },
           "43c6065b-20d4-44b7-a48f-1b3866deefdd": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>COVID-19 UPDATE - Please note there are significant delays for deliveries at this time. Please allow an extra 4-7 days for deliveries.<\/p>",
+              "announcement_text": "<p>COVID-19 UPDATE - Please note there are significant delays for deliveries at this time. Please allow an extra 4-7 days for deliveries.</p>",
               "show_announcement": false
             }
           },
           "82a50127-998b-4813-a44f-b8fff9bba901": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Please Note - We are away on holiday from June 4 - 25. Any order will be shipped . Thanks!<\/p>",
+              "announcement_text": "<p>Please Note - We are away on holiday from June 4 - 25. Any order will be shipped . Thanks!</p>",
               "show_announcement": false
             }
           },
           "3ff75694-3584-44eb-9f66-94a8d848fb9a": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Due to COVID-19, we are unable to send orders this week. All orders will be shipped next week on the 28th March. Thank you.<\/p>",
+              "announcement_text": "<p>Due to COVID-19, we are unable to send orders this week. All orders will be shipped next week on the 28th March. Thank you.</p>",
               "show_announcement": false
             }
           },
           "ccdf2446-b3ee-4cae-a73f-39d44d3f0f47": {
             "type": "text",
             "settings": {
-              "announcement_text": "<p>Just a heads-up: we'll be on holiday from June 4 to June 25, so any orders or support requests will be handled once we're back on June 26. Thanks for your understanding<\/p>",
+              "announcement_text": "<p>Just a heads-up: we'll be on holiday from June 4 to June 25, so any orders or support requests will be handled once we're back on June 26. Thanks for your understanding</p>",
               "show_announcement": false
             }
           }
@@ -103,7 +103,7 @@
         ],
         "settings": {
           "align_logo": "left",
-          "logo": "shopify:\/\/shop_images\/logo.png",
+          "logo": "shopify://shop_images/logo.png",
           "logo_max_width": 150,
           "main_linklist": "main-menu",
           "message": true,
@@ -148,6 +148,7 @@
       },
       "featured-collections": {
         "type": "collection",
+        "disabled": true,
         "settings": {
           "title": "Our Bestselling Soap",
           "collection": "bestselling-soap",
@@ -156,7 +157,7 @@
           "show_vendor": false,
           "show_view_all": true,
           "view_all_link_text": "View our range of handmade soaps",
-          "view_all_link_url": "shopify:\/\/collections\/soap"
+          "view_all_link_url": "shopify://collections/soap"
         }
       },
       "footer": {
@@ -164,6 +165,7 @@
         "blocks": {
           "1551343931816": {
             "type": "newsletter",
+            "disabled": true,
             "settings": {
               "title": "Sign Up to our Newsletter"
             }
@@ -219,7 +221,7 @@
       "password-header": {
         "type": "password-header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/logo.png",
+          "logo": "shopify://shop_images/logo.png",
           "logo_max_width": 230,
           "header": "Handmade Vegan Soap"
         }
@@ -247,7 +249,7 @@
           "4a819c86-5fc0-42bd-be0c-24a9ace62f88": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"text-center\"><a href=\"https:\/\/www.instagram.com\/earthbarnz\" title=\"https:\/\/www.instagram.com\/earthbarnz\"><svg aria-hidden=\"true\" focusable=\"false\" role=\"presentation\" class=\"icon icon-instagram\" viewbox=\"0 0 512 512\"><path d=\"M256 49.5c67.3 0 75.2.3 101.8 1.5 24.6 1.1 37.9 5.2 46.8 8.7 11.8 4.6 20.2 10 29 18.8s14.3 17.2 18.8 29c3.4 8.9 7.6 22.2 8.7 46.8 1.2 26.6 1.5 34.5 1.5 101.8s-.3 75.2-1.5 101.8c-1.1 24.6-5.2 37.9-8.7 46.8-4.6 11.8-10 20.2-18.8 29s-17.2 14.3-29 18.8c-8.9 3.4-22.2 7.6-46.8 8.7-26.6 1.2-34.5 1.5-101.8 1.5s-75.2-.3-101.8-1.5c-24.6-1.1-37.9-5.2-46.8-8.7-11.8-4.6-20.2-10-29-18.8s-14.3-17.2-18.8-29c-3.4-8.9-7.6-22.2-8.7-46.8-1.2-26.6-1.5-34.5-1.5-101.8s.3-75.2 1.5-101.8c1.1-24.6 5.2-37.9 8.7-46.8 4.6-11.8 10-20.2 18.8-29s17.2-14.3 29-18.8c8.9-3.4 22.2-7.6 46.8-8.7 26.6-1.3 34.5-1.5 101.8-1.5m0-45.4c-68.4 0-77 .3-103.9 1.5C125.3 6.8 107 11.1 91 17.3c-16.6 6.4-30.6 15.1-44.6 29.1-14 14-22.6 28.1-29.1 44.6-6.2 16-10.5 34.3-11.7 61.2C4.4 179 4.1 187.6 4.1 256s.3 77 1.5 103.9c1.2 26.8 5.5 45.1 11.7 61.2 6.4 16.6 15.1 30.6 29.1 44.6 14 14 28.1 22.6 44.6 29.1 16 6.2 34.3 10.5 61.2 11.7 26.9 1.2 35.4 1.5 103.9 1.5s77-.3 103.9-1.5c26.8-1.2 45.1-5.5 61.2-11.7 16.6-6.4 30.6-15.1 44.6-29.1 14-14 22.6-28.1 29.1-44.6 6.2-16 10.5-34.3 11.7-61.2 1.2-26.9 1.5-35.4 1.5-103.9s-.3-77-1.5-103.9c-1.2-26.8-5.5-45.1-11.7-61.2-6.4-16.6-15.1-30.6-29.1-44.6-14-14-28.1-22.6-44.6-29.1-16-6.2-34.3-10.5-61.2-11.7-27-1.1-35.6-1.4-104-1.4z\"><\/path><path d=\"M256 126.6c-71.4 0-129.4 57.9-129.4 129.4s58 129.4 129.4 129.4 129.4-58 129.4-129.4-58-129.4-129.4-129.4zm0 213.4c-46.4 0-84-37.6-84-84s37.6-84 84-84 84 37.6 84 84-37.6 84-84 84z\"><\/path><circle cx=\"390.5\" cy=\"121.5\" r=\"30.2\"><\/circle><\/svg><span class=\"ml-2\" style=\"border-bottom: 1px solid currentColor; padding-bottom: 1px;\">Follow us on Instagram<\/span><\/a><\/div>",
+              "code": "<div class=\"text-center\"><a href=\"https://www.instagram.com/earthbarnz\" title=\"https://www.instagram.com/earthbarnz\"><svg aria-hidden=\"true\" focusable=\"false\" role=\"presentation\" class=\"icon icon-instagram\" viewbox=\"0 0 512 512\"><path d=\"M256 49.5c67.3 0 75.2.3 101.8 1.5 24.6 1.1 37.9 5.2 46.8 8.7 11.8 4.6 20.2 10 29 18.8s14.3 17.2 18.8 29c3.4 8.9 7.6 22.2 8.7 46.8 1.2 26.6 1.5 34.5 1.5 101.8s-.3 75.2-1.5 101.8c-1.1 24.6-5.2 37.9-8.7 46.8-4.6 11.8-10 20.2-18.8 29s-17.2 14.3-29 18.8c-8.9 3.4-22.2 7.6-46.8 8.7-26.6 1.2-34.5 1.5-101.8 1.5s-75.2-.3-101.8-1.5c-24.6-1.1-37.9-5.2-46.8-8.7-11.8-4.6-20.2-10-29-18.8s-14.3-17.2-18.8-29c-3.4-8.9-7.6-22.2-8.7-46.8-1.2-26.6-1.5-34.5-1.5-101.8s.3-75.2 1.5-101.8c1.1-24.6 5.2-37.9 8.7-46.8 4.6-11.8 10-20.2 18.8-29s17.2-14.3 29-18.8c8.9-3.4 22.2-7.6 46.8-8.7 26.6-1.3 34.5-1.5 101.8-1.5m0-45.4c-68.4 0-77 .3-103.9 1.5C125.3 6.8 107 11.1 91 17.3c-16.6 6.4-30.6 15.1-44.6 29.1-14 14-22.6 28.1-29.1 44.6-6.2 16-10.5 34.3-11.7 61.2C4.4 179 4.1 187.6 4.1 256s.3 77 1.5 103.9c1.2 26.8 5.5 45.1 11.7 61.2 6.4 16.6 15.1 30.6 29.1 44.6 14 14 28.1 22.6 44.6 29.1 16 6.2 34.3 10.5 61.2 11.7 26.9 1.2 35.4 1.5 103.9 1.5s77-.3 103.9-1.5c26.8-1.2 45.1-5.5 61.2-11.7 16.6-6.4 30.6-15.1 44.6-29.1 14-14 22.6-28.1 29.1-44.6 6.2-16 10.5-34.3 11.7-61.2 1.2-26.9 1.5-35.4 1.5-103.9s-.3-77-1.5-103.9c-1.2-26.8-5.5-45.1-11.7-61.2-6.4-16.6-15.1-30.6-29.1-44.6-14-14-28.1-22.6-44.6-29.1-16-6.2-34.3-10.5-61.2-11.7-27-1.1-35.6-1.4-104-1.4z\"></path><path d=\"M256 126.6c-71.4 0-129.4 57.9-129.4 129.4s58 129.4 129.4 129.4 129.4-58 129.4-129.4-58-129.4-129.4-129.4zm0 213.4c-46.4 0-84-37.6-84-84s37.6-84 84-84 84 37.6 84 84-37.6 84-84 84z\"></path><circle cx=\"390.5\" cy=\"121.5\" r=\"30.2\"></circle></svg><span class=\"ml-2\" style=\"border-bottom: 1px solid currentColor; padding-bottom: 1px;\">Follow us on Instagram</span></a></div>",
               "width": "100%"
             }
           },
@@ -256,7 +258,7 @@
             "disabled": true,
             "settings": {
               "title": "",
-              "text": "<p><a href=\"https:\/\/www.instagram.com\/earthbarnz\" title=\"https:\/\/www.instagram.com\/earthbarnz\">Follow us on Instagram<\/a><\/p>",
+              "text": "<p><a href=\"https://www.instagram.com/earthbarnz\" title=\"https://www.instagram.com/earthbarnz\">Follow us on Instagram</a></p>",
               "width": "100%",
               "alignment": "center",
               "align_text": "center"
@@ -265,7 +267,7 @@
           "1551344017550": {
             "type": "html",
             "settings": {
-              "code": "<div id=\"insta-feed\"><\/div>",
+              "code": "<div id=\"insta-feed\"></div>",
               "width": "100%"
             }
           }
@@ -308,14 +310,14 @@
           "1557293034592-0": {
             "type": "quote",
             "settings": {
-              "quote": "<p>AMAZING!!!! the smell, the feel, the lather (immediate soft creamy lather as soon as the soap touches wet hair!). so stunning.<\/p>",
+              "quote": "<p>AMAZING!!!! the smell, the feel, the lather (immediate soft creamy lather as soon as the soap touches wet hair!). so stunning.</p>",
               "author": "Monique"
             }
           },
           "1557299153834": {
             "type": "quote",
             "settings": {
-              "quote": "<p>I love your body butter bar! I&#x27;d like to buy 5 more.<\/p>",
+              "quote": "<p>I love your body butter bar! I&#x27;d like to buy 5 more.</p>",
               "author": "Shanoor"
             }
           }
@@ -335,7 +337,7 @@
           "1561710605006": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"custom-hero\">\n  <div class=\"hero-image\"><\/div>\n  <div class=\"hero-content\">\n    <h1>Natural beauty bars that love you back<\/h1>\n    <ul class=\"hero-features\">\n      <li>\n        <div><img src=\"https:\/\/earthbar.s3-ap-southeast-2.amazonaws.com\/palm-icon.svg\"><\/div>\n        <div>Palm Oil Free<\/div>\n      <\/li>\n      <li>\n        <div><img src=\"https:\/\/earthbar.s3-ap-southeast-2.amazonaws.com\/vegan.svg\"><\/div>\n        <div>Vegan<\/div>\n      <\/li>\n      <li>\n        <div><img src=\"https:\/\/earthbar.s3-ap-southeast-2.amazonaws.com\/plastic-free.svg\"><\/div>\n        <div>Plastic Free<\/div>\n      <\/li>\n      <li>\n        <div><img src=\"https:\/\/earthbar.s3-ap-southeast-2.amazonaws.com\/100-naturally-derived.svg\"><\/div>\n        <div>Organic<\/div>\n      <\/li>\n      <li>\n        <div><img src=\"https:\/\/earthbar.s3-ap-southeast-2.amazonaws.com\/handcrafted.svg\"><\/div>\n        <div>Handcrafted<\/div>\n      <\/li>\n    <\/ul>\n  <\/div>\n<\/div>",
+              "code": "<div class=\"custom-hero\">\n  <div class=\"hero-image\"></div>\n  <div class=\"hero-content\">\n    <h1>Natural beauty bars that love you back</h1>\n    <ul class=\"hero-features\">\n      <li>\n        <div><img src=\"https://earthbar.s3-ap-southeast-2.amazonaws.com/palm-icon.svg\"></div>\n        <div>Palm Oil Free</div>\n      </li>\n      <li>\n        <div><img src=\"https://earthbar.s3-ap-southeast-2.amazonaws.com/vegan.svg\"></div>\n        <div>Vegan</div>\n      </li>\n      <li>\n        <div><img src=\"https://earthbar.s3-ap-southeast-2.amazonaws.com/plastic-free.svg\"></div>\n        <div>Plastic Free</div>\n      </li>\n      <li>\n        <div><img src=\"https://earthbar.s3-ap-southeast-2.amazonaws.com/100-naturally-derived.svg\"></div>\n        <div>Organic</div>\n      </li>\n      <li>\n        <div><img src=\"https://earthbar.s3-ap-southeast-2.amazonaws.com/handcrafted.svg\"></div>\n        <div>Handcrafted</div>\n      </li>\n    </ul>\n  </div>\n</div>",
               "width": "100%"
             }
           }
@@ -364,10 +366,10 @@
       "1562566118907": {
         "type": "feature-row",
         "settings": {
-          "image": "shopify:\/\/shop_images\/christie.jpg",
+          "image": "shopify://shop_images/christie.jpg",
           "layout": "left",
           "title": "Our Mission is Personal",
-          "text": "<p>I dived headfirst into the creation of ethical vegan products after a painful, 9-month battle with scarlet fever and a secondary skin rash. After trying countless products (many of which made the painful rash worse), I discovered that my homemade kawakawa skin balm soothed my skin far more effectively than anything else. <\/p><p><\/p><p><em>~ Christie Rishworth (founder)<\/em><\/p>",
+          "text": "<p>I dived headfirst into the creation of ethical vegan products after a painful, 9-month battle with scarlet fever and a secondary skin rash. After trying countless products (many of which made the painful rash worse), I discovered that my homemade kawakawa skin balm soothed my skin far more effectively than anything else. </p><p></p><p><em>~ Christie Rishworth (founder)</em></p>",
           "button_label": "",
           "button_link": ""
         }
@@ -384,7 +386,7 @@
           "1562728311549": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"offer bg-light\">\n<div class=\"offer__icon\"><img src=\"https:\/\/earthbar.s3-ap-southeast-2.amazonaws.com\/face.svg\" alt=\"Face Icon\"><\/div>\n<div class=\"offer__title font-cursive teal\">Latest Offer<\/div>\n<h3 class=\"offer__content teal-dark\">Buy 2 soaps, get 1 free<\/h3>\n<p class=\"offer__subcontent teal-dark\">Just add 3 soaps to your cart and 1 will be free!<\/p>\n \n<\/div>",
+              "code": "<div class=\"offer bg-light\">\n<div class=\"offer__icon\"><img src=\"https://earthbar.s3-ap-southeast-2.amazonaws.com/face.svg\" alt=\"Face Icon\"></div>\n<div class=\"offer__title font-cursive teal\">Latest Offer</div>\n<h3 class=\"offer__content teal-dark\">Buy 2 soaps, get 1 free</h3>\n<p class=\"offer__subcontent teal-dark\">Just add 3 soaps to your cart and 1 will be free!</p>\n \n</div>",
               "width": "100%"
             }
           }
@@ -510,7 +512,7 @@
           "1594585289622-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/palm-oil-free.png",
+              "image": "shopify://shop_images/palm-oil-free.png",
               "width": "50%",
               "alignment": "center"
             }
@@ -519,7 +521,7 @@
             "type": "text",
             "settings": {
               "title": "",
-              "text": "<p>Palm oil is a type of vegetable oil derived from palm oil fruit, and is said to be <strong>found in 70% of cosmetic products<\/strong>. <br\/><br\/>Its production destroys rainforests and biodiversity, including that of the Orangutans which have lost 80% of their habit in the last 20 years, and now risk extinction.<br\/><br\/><strong>We are proud that our range of products is 100% palm oil free.<\/strong><\/p>",
+              "text": "<p>Palm oil is a type of vegetable oil derived from palm oil fruit, and is said to be <strong>found in 70% of cosmetic products</strong>. <br/><br/>Its production destroys rainforests and biodiversity, including that of the Orangutans which have lost 80% of their habit in the last 20 years, and now risk extinction.<br/><br/><strong>We are proud that our range of products is 100% palm oil free.</strong></p>",
               "width": "50%",
               "alignment": "center",
               "align_text": "left"
@@ -536,8 +538,7 @@
       },
       "drawer": {
         "type": "drawer",
-        "settings": {
-        }
+        "settings": {}
       },
       "16404543962c090991": {
         "type": "custom-hero",
@@ -546,8 +547,8 @@
           "custom_hero_line2": "that love you back",
           "custom_hero_link_url": "",
           "custom_hero_link_text": "",
-          "custom_hero_image1": "shopify:\/\/shop_images\/body-butter2.jpg",
-          "custom_hero_image2": "shopify:\/\/shop_images\/earthbar-hero.jpg"
+          "custom_hero_image1": "shopify://shop_images/body-butter2.jpg",
+          "custom_hero_image2": "shopify://shop_images/earthbar-hero.jpg"
         }
       }
     },
@@ -597,8 +598,7 @@
       "sections": {
         "header": {
           "type": "header",
-          "settings": {
-          }
+          "settings": {}
         },
         "hero": {
           "type": "hero",
@@ -611,21 +611,18 @@
           "blocks": {
             "slideshow-0": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             },
             "slideshow-1": {
               "type": "image",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
             "slideshow-0",
             "slideshow-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "featured-collections": {
           "type": "collection",
@@ -635,31 +632,26 @@
         },
         "feature-row": {
           "type": "feature-row",
-          "settings": {
-          }
+          "settings": {}
         },
         "footer": {
           "type": "footer",
           "blocks": {
             "link_list": {
               "type": "link_list",
-              "settings": {
-              }
+              "settings": {}
             },
             "link_list-1": {
               "type": "link_list",
-              "settings": {
-              }
+              "settings": {}
             },
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -668,8 +660,7 @@
             "text",
             "newsletter"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "content_for_index": [
@@ -809,23 +800,20 @@
         },
         "1492033809691": {
           "type": "map",
-          "settings": {
-          }
+          "settings": {}
         },
         "1492033877875": {
           "type": "quotes",
           "blocks": {
             "1492033877875-0": {
               "type": "quote",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
             "1492033877875-0"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "1492033924902": {
           "type": "custom-content",
@@ -851,18 +839,15 @@
           "blocks": {
             "1492096252560-0": {
               "type": "featured_collection",
-              "settings": {
-              }
+              "settings": {}
             },
             "1492096252560-1": {
               "type": "featured_collection",
-              "settings": {
-              }
+              "settings": {}
             },
             "1492096252560-2": {
               "type": "featured_collection",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -901,23 +886,19 @@
           "blocks": {
             "link_list": {
               "type": "link_list",
-              "settings": {
-              }
+              "settings": {}
             },
             "link_list-1": {
               "type": "link_list",
-              "settings": {
-              }
+              "settings": {}
             },
             "text": {
               "type": "text",
-              "settings": {
-              }
+              "settings": {}
             },
             "newsletter": {
               "type": "newsletter",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -926,8 +907,7 @@
             "text",
             "newsletter"
           ],
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "content_for_index": [
